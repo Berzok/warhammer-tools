@@ -1,0 +1,15 @@
+
+#container {
+	top:0;
+	left:0;
+	height: 10%;
+	width: 100%;
+	max-width: 100%;
+	border-bottom: 8px solid #01796F;
+	position: fixed;
+	background-color: #EEEEEE;
+	transition: 1s;
+	margin-bottom: 15%;
+	display: flex;
+	flex-flow: row;
+}

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "jquery": "^3.4.1",
     "nedb": "^1.8.0",
     "pdfobject": "^2.1.1"
   },

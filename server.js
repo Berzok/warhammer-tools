@@ -10,7 +10,7 @@ var app = express();
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
-app.use(express.static('public/js/common.js'));
+app.use(express.static('public/js'));
 
 
 // http://expressjs.com/en/starter/basic-routing.html
@@ -23,6 +23,9 @@ app.get('/*+[^.][^c][^s][^s]', function(request, response) {
 });
 app.get('/*css', function(request, response) {
   response.sendFile(__dirname + '/public/css' + request['url']);
+});
+app.get('/*js', function(request, response) {
+  response.sendFile(__dirname + '/public/js' + request['url']);
 });
 
 // listen for requests :)

@@ -14,6 +14,10 @@ app.use(express.static('public/js/common.js'));
 
 
 // http://expressjs.com/en/starter/basic-routing.html
+app.get('', function(request, response) {
+  response.sendFile(__dirname + '/view' + request['url']);
+});
+
 app.get('/*+[^.][^c][^s][^s]', function(request, response) {
   response.sendFile(__dirname + '/view' + request['url']);
 });
@@ -22,7 +26,7 @@ app.get('/*css', function(request, response) {
 });
 
 // listen for requests :)
-var listener = app.listen(54110, function() {
+var listener = app.listen(3000, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 

@@ -14,47 +14,45 @@ app.use(express.static('public/js'));
 
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('', function(request, response) {
-  response.sendFile(__dirname + '/view' + request['url']);
+app.get('', function (request, response) {
+    response.sendFile(__dirname + '/view' + request['url']);
 });
 
-app.get('/*+[^.][^c][^s][^s]', function(request, response) {
-  response.sendFile(__dirname + '/view' + request['url']);
+app.get('/*+[^.][^c][^s][^s]', function (request, response) {
+    response.sendFile(__dirname + '/view' + request['url']);
 });
-app.get('/*css', function(request, response) {
-  response.sendFile(__dirname + '/public/css' + request['url']);
+app.get('/*css', function (request, response) {
+    response.sendFile(__dirname + '/public/css' + request['url']);
 });
-app.get('/*js', function(request, response) {
-  response.sendFile(__dirname + '/public/js' + request['url']);
+app.get('/*js', function (request, response) {
+    response.sendFile(__dirname + '/public/js' + request['url']);
 });
 
 // listen for requests :)
-var listener = app.listen(3000, function() {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(3000, function () {
+    console.log('Your app is listening on port ' + listener.address().port);
 });
 
 
 
-var WebHelper = new function() {
+var WebHelper = new function () {
+    this.basepath = '';
+    this.init = function init(basepath) {
+        this.basepath = basepath;
+    };
 
-  this.basepath = '';
-
-  this.init = function init(basepath) {
-    this.basepath = basepath;
-  };
-
-  /**
-   *
-   * @param {string} path
-   * @returns {undefined}
-   */
-  this.getUrl = function getUrl(path) {
-    if (path.charAt(0) === '/') {
-      return this.basepath + path;
-    } else {
-      return document.URL + '/' + path;
-    }
-  };
+    /**
+     *
+     * @param {string} path
+     * @returns {undefined}
+     */
+    this.getUrl = function getUrl(path) {
+        if (path.charAt(0) === '/') {
+            return this.basepath + path;
+        } else {
+            return document.URL + '/' + path;
+        }
+    };
 };
 
 

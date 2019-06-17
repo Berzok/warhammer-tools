@@ -1,0 +1,157 @@
+
+
+
+.containerglobal{
+    height: 100%;
+}
+
+.containerglobal legend{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+fieldset{
+    border: 3px solid #3e3303;
+    height: 60%;
+    min-height: inherit;
+    margin: 0;
+}
+
+#informations_page{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.personnage, .personnage legend, .personnage fieldset, .personnage legend h2{
+    flex: 0 1 30%;
+    text-align: center;
+    margin: 0;
+    max-height: 20%;
+}
+.personnageDuCentre{
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+}
+
+.characterIcon{
+    height: auto;
+    max-height: 40%;
+    width: 160px;
+    object-fit: contain;
+}
+
+
+#stickyButton{
+    float: left;
+    position: fixed;
+    top: 30%;
+    margin-left: 11%;
+    color: red;
+}
+
+
+
+img{
+    cursor: pointer;
+}
+
+#d4:hover{
+    filter: drop-shadow(0px 0px 30px rgb(255, 87, 53));
+}
+#d6:hover{
+    filter: drop-shadow(0px 0px 30px rgb(124, 183, 64));
+}
+#d10:hover{
+    filter: drop-shadow(0px 0px 20px rgb(53, 94, 170));
+}
+#d100:hover{
+    filter: drop-shadow(0px 0px 20px rgb(115, 62, 161));
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: 85%;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom {
+    from {transform: scale(0.1)}
+    to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+

@@ -86,10 +86,13 @@ img{
 
 
 #erratum:hover{
-    filter: drop-shadow(0px 0px 30px rgb(160, 174, 183));
+    filter: drop-shadow(0px 0px 30px rgb(227, 245, 255));
 }
 #kurt:hover{
     filter: drop-shadow(0px 0px 30px rgb(183, 69, 21));
+}
+#johanna:hover{
+    filter: drop-shadow(0px 0px 20px rgb(59, 143, 255));
 }
 
 

@@ -7,18 +7,21 @@
 }
 
 #inventaire{
+    position: fixed;
     background-image: url('../img/old_paper.jpg');
     background-repeat: no-repeat;
+    background-position: bottom;
     width: 12%;
-    margin-left: 4%;
+    margin: 9% auto auto 4%;
     flex: 0 0 auto;
     text-align: center;
-    max-height: 20%;
+    max-height: 100vh;
 }
 
 #inventory{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .containerglobal{

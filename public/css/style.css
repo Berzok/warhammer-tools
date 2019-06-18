@@ -34,6 +34,7 @@ body{
 	width: 55%;
 	padding: 0;
 	background-image: url('../img/old_paper.jpg');
+	background-repeat: no-repeat;
 }
 
 .containerglobal legend{
@@ -55,8 +56,26 @@ fieldset{
 	/*background-image: url('http://www.blogmais.org/ourimg/big/22/227032_old-paper-wallpaper.jpg');*/
 }
 
-.personnage, .personnage legend, .personnage fieldset, .personnage legend h2{
+
+.flexDiv{
 	margin-top: 6%;
+}
+.flexDiv legend, .flexDiv fieldset, .flexDiv legend h2{
+	flex: 0 1 30%;
+	text-align: center;
+	margin: 0;
+	max-height: 20%;
+}
+.flexDivCentre{
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+}
+
+
+.imageIcon{
+	height: auto;
+	max-height: 40%;
+	object-fit: contain;
 }
 
 

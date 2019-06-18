@@ -8,6 +8,10 @@ var app = express();
 // we've started you off with Express,
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
+
+
+
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 app.use(express.static('public/js'));
@@ -25,8 +29,9 @@ app.get('/*css', function (request, response) {
     response.sendFile(__dirname + '/public/css' + request['url']);
 });
 app.get('/*js', function (request, response) {
-    response.sendFile(__dirname + '/public/js' + request['url']);
+    response.sendFile(__dirname + 'public/js' + request['url']);
 });
+
 
 // listen for requests :)
 var listener = app.listen(3000, function () {

@@ -34,6 +34,7 @@ function addDice(id){
         diceToAdd += diceInBag[i] + i + ' + ';
     }
     $('#set').val(diceToAdd);
+    console.dir($('#set').val());
 }
 
 
@@ -48,4 +49,5 @@ function clearInventory(){
         this.value = 0;
     });
     $('#set').val('');
+    diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0 };
 }

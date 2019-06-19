@@ -11,11 +11,22 @@
 
 <div id="containerGeneral">
 
-    <div class="flexDiv" id="inventaire">
+    <div class="flexDiv" class="sideMenu" id="inventaire">
         <fieldset>
             <legend><h1>Inventaire</h1></legend>
             <div id="inventory">
+                <input type="hidden" id="set" value="0">
+                <div id='inventoryd3' class='inventoryDice'></div>
+                <div id='inventoryd4' class='inventoryDice'></div>
+                <div id='inventoryd6' class='inventoryDice'></div>
+                <div id='inventoryd10' class='inventoryDice'></div>
+                <div id='inventoryd12' class='inventoryDice'></div>
+                <div id='inventoryd20' class='inventoryDice'></div>
+                <div id='inventoryd100' class='inventoryDice'></div>
             </div>
+            <br />
+            <button id="throw" class="boutonDice"><i class="fas fa-dice"></i></button>
+            <button id="clear" class="boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
         </fieldset>
     </div>
 
@@ -54,8 +65,8 @@
                     <h2>d100</h2>
                 </div>
             </div>
-            <canvas id="diceThrow">
-            </canvas>
+            <div id="canvas" class="diceThrow">
+            </div>
         </fieldset>
     </div>
 
@@ -73,3 +84,14 @@
 </script>
 
 <script type="application/x-javascript" src="js/dice.js"></script>
+
+
+<script src="js/tealDice/lib/three.min.js"></script>
+<script src="js/tealDice/lib/cannon.min.js"></script>
+
+<script type="text/javascript" src="js/tealDice/teal.js"></script>
+<script type="text/javascript" src="js/tealDice/dice.js"></script>
+<script type="text/javascript" src="js/tealDice/main.js"></script>
+<script type="text/javascript" defer="defer">
+    dice_initialize(document.body);
+</script>

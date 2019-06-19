@@ -270,17 +270,17 @@
     }
 
     this.material_options = {
-        specular: 0x172022,
+        specular: 0x690e0e,
         color: 0xf0f0f0,
         shininess: 40,
         shading: THREE.FlatShading,
     };
-    this.label_color = '#aaaaaa';
+    this.label_color = '#ffea49';
     this.dice_color = '#202020';
     this.ambient_light_color = 0xf0f5fb;
     this.spot_light_color = 0xefdfd5;
-    this.selector_back_colors = { color: 0x404040, shininess: 0, emissive: 0x858787 };
-    this.desk_color = 0xdfdfdf;
+    this.selector_back_colors = { color: 0x562a0c, shininess: 0, emissive: 0 };
+    this.desk_color = 0x562a0c;
     this.use_shadows = true;
 
     this.known_types = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
@@ -395,7 +395,7 @@
         container.appendChild(this.renderer.domElement);
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFShadowMap;
-        this.renderer.setClearColor(0xffffff, 1);
+        this.renderer.setClearColor(0x228B22, 1);
 
         this.reinit(container, dimentions);
 
@@ -445,8 +445,15 @@
     }
 
     this.dice_box.prototype.reinit = function(container, dimentions) {
-        this.cw = container.clientWidth / 2;
-        this.ch = container.clientHeight / 2;
+
+        // this.cw = container.clientWidth / 2;
+        // this.ch = container.clientHeight / 2;
+
+
+        this.cw = $('#informations_page').width() / 2;
+        this.ch = container.clientHeight * 2;
+
+
         if (dimentions) {
             this.w = dimentions.w;
             this.h = dimentions.h;
@@ -455,22 +462,30 @@
             this.w = this.cw;
             this.h = this.ch;
         }
-        this.aspect = Math.min(this.cw / this.w, this.ch / this.h);
-        that.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 13;
 
-        this.renderer.setSize(this.cw * 2, this.ch * 2);
+
+        //C'est le zoom apparemment
+        this.aspect = Math.min(this.cw / this.w, this.ch / this.h) ;
+
+        that.scale = Math.sqrt(this.cw * this.cw + this.ch * this.ch) / 9;
+        // that.scale = 50;
+
+        this.renderer.setSize(this.cw * 1, this.ch * 1);
+
+
 
         this.wh = this.ch / this.aspect / Math.tan(10 * Math.PI / 180);
+
         if (this.camera) this.scene.remove(this.camera);
         this.camera = new THREE.PerspectiveCamera(20, this.cw / this.ch, 1, this.wh * 1.3);
-        this.camera.position.z = this.wh;
+        this.camera.position.z = this.wh * 1;
 
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
-        this.light = new THREE.SpotLight(that.spot_light_color, 2.0);
+        this.light = new THREE.SpotLight(that.spot_light_color, 0.8);
         this.light.position.set(-mw / 2, mw / 2, mw * 2);
         this.light.target.position.set(0, 0, 0);
-        this.light.distance = mw * 5;
+        this.light.distance = mw * 8;
         this.light.castShadow = true;
         this.light.shadowCameraNear = mw / 10;
         this.light.shadowCameraFar = mw * 5;
@@ -771,6 +786,7 @@
         }
         vector.x /= dist; vector.y /= dist;
         var notation = notation_getter.call(box);
+
         if (notation.set.length == 0) return;
         var vectors = box.generate_vectors(notation, vector, boost);
         box.rolling = true;
@@ -797,6 +813,7 @@
             var time_int = (new Date()).getTime() - box.mouse_time;
             if (time_int > 2000) time_int = 2000;
             var boost = Math.sqrt((2500 - time_int) / 2500) * dist * 2;
+            boost =  boost * 5;
             prepare_rnd(function() {
                 throw_dices(box, vector, boost, dist, notation_getter, before_roll, after_roll);
             });

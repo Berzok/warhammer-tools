@@ -1,6 +1,8 @@
 
 
 
+
+
 #containerGeneral{
     display: flex;
     align-items: baseline;
@@ -23,6 +25,40 @@
     flex-direction: column;
     position: relative;
 }
+.inventoryDice{
+    display: flex;
+    flex-direction: row;
+}
+.tableDiceInventory{
+    border: none;
+}
+input[name^="counter"]{
+    font-size: 28px;
+    background: transparent;
+    border: none;
+    text-align: center;
+}
+
+
+.boutonDice{
+    width: 48%;
+    height: 48px;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+}
+#throw{
+    color: cornflowerblue;
+    font-size: 28px;
+    background: rgba(255, 249, 242, 0.36);
+}
+#clear{
+    color: #ed2b00;
+    font-size: 28px;
+    background: rgba(255, 249, 242, 0.36);
+}
+
+
 
 .containerglobal{
     height: 100%;
@@ -47,6 +83,8 @@ fieldset{
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: baseline;
+    padding-bottom: 6%;
+    border-bottom: 4px solid black;
 }
 
 .flexDiv, .flexDiv legend, .flexDiv fieldset, .flexDiv legend h2{
@@ -65,6 +103,11 @@ fieldset{
     width: 60%;
 }
 
+
+.diceThrow, .diceThrow > canvas{
+    width: 99.5% !important;
+    border: 2px solid chocolate;
+}
 
 #stickyButton{
     float: left;

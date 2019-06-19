@@ -89,16 +89,10 @@ fieldset{
 
 table, th, td{
 	text-align: center;
-	border: 1px solid black;
 	border-collapse: collapse;
-}
-table{
-	width: 45%;
-	margin-top: 6px;
 }
 th, td{
 	padding: 5px;
-	border: 1px solid black;
 	border-collapse: collapse;
 }
 th{

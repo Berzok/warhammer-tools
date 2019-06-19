@@ -4,8 +4,6 @@ function dice_initialize(container) {
     $t.remove($t.id('loading_text'));
 
     var canvas = $t.id('canvas');
-    canvas.style.width = window.innerWidth - 1 + 'px';
-    canvas.style.height = window.innerHeight - 1 + 'px';
     var label = $t.id('label');
     var set = $t.id('set');
     var selector_div = $t.id('selector_div');
@@ -14,12 +12,23 @@ function dice_initialize(container) {
 
     $t.dice.use_true_random = false;
 
-    function on_set_change(ev) { set.style.width = set.value.length + 3 + 'ex'; }
+    function on_set_change(ev){
+        set.style.width = set.value.length + 3 + 'ex';
+    }
+
     $t.bind(set, 'keyup', on_set_change);
-    $t.bind(set, 'mousedown', function(ev) { ev.stopPropagation(); });
-    $t.bind(set, 'mouseup', function(ev) { ev.stopPropagation(); });
-    $t.bind(set, 'focus', function(ev) { $t.set(container, { class: '' }); });
-    $t.bind(set, 'blur', function(ev) { $t.set(container, { class: 'noselect' }); });
+    $t.bind(set, 'mousedown', function(ev){
+        ev.stopPropagation();
+    });
+    $t.bind(set, 'mouseup', function(ev){
+        ev.stopPropagation();
+    });
+    $t.bind(set, 'focus', function(ev){
+        $t.set(container, { class: '' });
+    });
+    $t.bind(set, 'blur', function(ev){
+        $t.set(container, { class: 'noselect' });
+    });
 
     $t.bind($t.id('clear'), ['mouseup', 'touchend'], function(ev) {
         ev.stopPropagation();
@@ -42,24 +51,27 @@ function dice_initialize(container) {
         $t.dice.label_color = '#202020';
     }
 
-    var box = new $t.dice.dice_box(canvas, { w: 500, h: 300 });
+    var box = new $t.dice.dice_box(canvas);
     box.animate_selector = false;
 
     $t.bind(window, 'resize', function() {
         canvas.style.width = window.innerWidth - 1 + 'px';
         canvas.style.height = window.innerHeight - 1 + 'px';
-        box.reinit(canvas, { w: 500, h: 300 });
+        box.reinit(canvas, { w: 830, h: 417 });
     });
 
     function show_selector() {
-        info_div.style.display = 'none';
-        selector_div.style.display = 'inline-block';
+        //info_div.style.display = 'none';
+        //selector_div.style.display = 'inline-block';
+
         box.draw_selector();
     }
 
     function before_roll(vectors, notation, callback) {
-        info_div.style.display = 'none';
-        selector_div.style.display = 'none';
+        //info_div.style.display = 'none';
+        //selector_div.style.display = 'none';
+
+
         // do here rpc call or whatever to get your own result of throw.
         // then callback with array of your result, example:
         // callback([2, 2, 2, 2]); // for 4d6 where all dice values are 2.
@@ -79,8 +91,8 @@ function dice_initialize(container) {
         }
         if (result.length > 1) res += ' = ' + 
                 (result.reduce(function(s, a) { return s + a; }) + notation.constant);
-        label.innerHTML = res;
-        info_div.style.display = 'inline-block';
+        console.dir('Result: ' + res);
+        //info_div.style.display = 'inline-block';
     }
 
     box.bind_mouse(container, notation_getter, before_roll, after_roll);
@@ -88,11 +100,8 @@ function dice_initialize(container) {
 
     $t.bind(container, ['mouseup', 'touchend'], function(ev) {
         ev.stopPropagation();
-        if (selector_div.style.display == 'none') {
-            if (!box.rolling) show_selector();
             box.rolling = false;
-            return;
-        }
+
         var name = box.search_dice_by_mouse(ev);
         if (name != undefined) {
             var notation = $t.dice.parse_notation(set.value);

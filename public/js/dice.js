@@ -19,24 +19,30 @@ function addDice(id){
                     "<input type='number' class='diceCount' name='counter_"+id+"' min='0' max='9' value='1' step='1' style='width: 100%; line-height: 28px'>" +
                 "</td>" +
             "</tr>" +
-            "</table>")
+            "</table>");
+        diceInBag[id] += 1;
     }
     else{
+        diceInBag[id] += 1;
         document.getElementsByName('counter_'+id)[0].stepUp(1);
     }
-    console.dir('Avant: ' + $('#set').val());
-    var diceToAdd = '';
-    $('#set').val($('#set').val() + $('input[name="counter_'+id+'"]').val() + id + ' + ');
     if(id == 'd100'){
-        $('#set').val($('#set').val()+'d10 + ');
+        diceInBag['d10'] += 1;
     }
-    console.dir('Après: ' + $('#set').val());
+    var diceToAdd = '';
+    for(let i in diceInBag){
+        diceToAdd += diceInBag[i] + i + ' + ';
+    }
+    $('#set').val(diceToAdd);
 }
 
 
 
 
-var inventaireBase = $('#inventory').html();
+var diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0 };
+
+
+
 function clearInventory(){
     $('.diceCount').each(function(){
         this.value = 0;

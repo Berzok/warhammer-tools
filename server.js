@@ -9,28 +9,6 @@ var app = express();
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
 
-const fs = require('fs');
-
-export function read(){
-    fs.readFile(filename, (err, data) => {
-        if(err){
-            throw err;
-        }
-        console.log(data.toString());
-    })
-}
-
-export function function1() {
-    console.log('f1')
-}
-
-export function function2() {
-    console.log('f2')
-}
-
-export default read;
-
-
 
 
 // http://expressjs.com/en/starter/static-files.html

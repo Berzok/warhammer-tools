@@ -211,6 +211,12 @@
         return materials;
     }
 
+    this.create_d3_geometry = function(radius) {
+        var vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
+        var faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3]];
+        return create_geom(vertices, faces, radius, -0.1, Math.PI * 7 / 6, 0.96);
+    }
+
     this.create_d4_geometry = function(radius) {
         var vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
         var faces = [[1, 0, 2, 1], [0, 1, 3, 2], [0, 3, 2, 3], [1, 2, 3, 4]];
@@ -283,13 +289,20 @@
     this.desk_color = 0x562a0c;
     this.use_shadows = true;
 
-    this.known_types = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
-    this.dice_face_range = { 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9], 
+    this.known_types = ['d3', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
+    this.dice_face_range = { 'd3': [1,3], 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9],
         'd12': [1, 12], 'd20': [1, 20], 'd100': [0, 9] };
-    this.dice_mass = { 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
-    this.dice_inertia = { 'd4': 5, 'd6': 13, 'd8': 10, 'd10': 9, 'd12': 8, 'd20': 6, 'd100': 9 };
+    this.dice_mass = { 'd3': 250, 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
+    this.dice_inertia = { 'd3': 8, 'd4': 5, 'd6': 13, 'd8': 10, 'd10': 9, 'd12': 8, 'd20': 6, 'd100': 9 };
 
     this.scale = 50;
+
+    this.create_d3 = function() {
+        if (!this.d3_geometry) this.d3_geometry = this.create_d3_geometry(this.scale * 1.2);
+        if (!this.d3_material) this.d3_material = new THREE.MeshFaceMaterial(
+            this.create_dice_materials(this.scale / 2, this.scale * 2, 1.0));
+        return new THREE.Mesh(this.d3_geometry, this.dice_material);
+    }
 
     this.create_d4 = function() {
         if (!this.d4_geometry) this.d4_geometry = this.create_d4_geometry(this.scale * 1.2);
@@ -759,6 +772,7 @@
         var mouse_captured = false;
 
         for (var i = 0, pos = -3; i < that.known_types.length; ++i, ++pos) {
+            console.dir(that.known_types[i]);
             var dice = $t.dice['create_' + that.known_types[i]]();
             dice.position.set(pos * step, 0, step * 0.5);
             dice.castShadow = true;

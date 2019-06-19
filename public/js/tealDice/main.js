@@ -110,6 +110,19 @@ function dice_initialize(container) {
             on_set_change();
         }
     });
+    $('.diceCount').each(function(){
+        $t.bind(this, 'change', function(ev){
+            ev.stopPropagation();
+            box.rolling = false;
+            var name = box.search_dice_by_mouse(ev);
+            if (name != undefined) {
+                var notation = $t.dice.parse_notation(set.value);
+                notation.set.push(name);
+                set.value = $t.dice.stringify_notation(notation);
+                on_set_change();
+            }
+        });
+    })
 
     if (params.notation) {
         set.value = params.notation;

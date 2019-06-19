@@ -106,6 +106,7 @@ fieldset{
 
 .diceThrow, .diceThrow > canvas{
     width: 99.5% !important;
+    height: 417px !important;
     border: 2px solid chocolate;
 }
 

@@ -1,0 +1,14 @@
+
+.aventure{
+    margin-top: 24px;
+    padding: 4px 4px 4px 4px;
+    background-color: rgba(255, 236, 216, 0.26);
+    line-height: 30px;
+    font-size: 20px;
+    border: 2px solid #3e3303;
+}
+
+.containerGlobal > fieldset{
+    height: auto;
+}
+

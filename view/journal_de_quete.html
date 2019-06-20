@@ -10,23 +10,32 @@
 
 <body>
 
-<div class="containerGlobal">
-    <fieldset>
-        <legend><h1 id="titreFieldset">Catégories</h1></legend>
-        <div id="informations_page">
-            <div id="categorie">
-                <ul>
-                    <li class="clickableLi" onclick="smoothTransition('calendrier')"><h2><i class="far fa-calendar-alt"></i> Calendrier</h2></li>
-                    <li class="clickableLi" onclick="smoothTransition('synopsis')"><h2><i class="fas fa-book-reader"></i> Synopsis</h2></li>
-                    <li class="clickableLi" onclick="smoothTransition('map')"><h2><i class="fas fa-map"></i> Carte du monde</h2></li>
-                </ul>
-            </div>
-            <div class="aventure">
 
+<div id="containerGeneral">
+
+    <div class="flexDiv" class="sideMenu" id="inventaire">
+        <fieldset>
+            <legend><h1>Catégories</h1></legend>
+            <button id="throw" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br /> Synopsis</button>
+            <button id="clear" class="boutonDice clickableLi"><i class="fas fa-map"></i><br />Carte</button>
+        </fieldset>
+    </div>
+
+
+    <div class="containerGlobal">
+        <fieldset>
+            <legend><h1 id="titreFieldset">Contenu</h1></legend>
+            <div id="informations_page">
+    <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
+                <div id="content">
+                    aaa
+                </div>
             </div>
-        </div>
-    </fieldset>
+        </fieldset>
+    </div>
+
 </div>
+
 </body>
 </html>
 

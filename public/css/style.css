@@ -31,7 +31,6 @@ body{
 	text-align: center;
 	margin: 9% auto 5% auto;
 	min-height: 60%;
-	width: 55%;
 	padding: 0;
 	background-image: url('../img/old_paper.jpg');
 	background-repeat: no-repeat;
@@ -53,7 +52,7 @@ fieldset{
 
 #informations_page{
 	text-align: start;
-	margin-top: 1%;
+	margin-top: 0;
 	/*background-image: url('http://www.blogmais.org/ourimg/big/22/227032_old-paper-wallpaper.jpg');*/
 }
 

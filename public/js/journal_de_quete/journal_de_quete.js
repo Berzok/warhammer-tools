@@ -12,14 +12,16 @@ $('li').each(this, function(){
 
 function smoothTransition(categorie){
     switch(categorie){
-        case 'calendrier': createCalendar();
+        case 'calendrier': createCalendar(function(){
+            calendarCallback();
+        });
         case 'synopsis': createSynopsis();
         case 'map': createMap();
     }
 
 }
 
-function createCalendar(){
+function createCalendar(calendarCallback){
 
     $('#informations_page').html("<iframe id='calendrier' src='https://fantasy-calendar.com/calendar?action=view&id=b3298f3654f3fc03fd94e2ddd4847877'></iframe>");
 
@@ -47,7 +49,18 @@ function createCalendar(){
 
         }
     });*/
+    setTimeout(function(){
+        calendarCallback();
+    }, 4000);
 }
+
+
+function calendarCallback(){
+    var calendrier = $('#calendrier');
+    var calendar = calendrier.contents().find('#calendar_container');
+    console.log(calendar);
+}
+
 
 function createSynopsis(){
     return;

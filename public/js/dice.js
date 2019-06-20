@@ -45,8 +45,8 @@ var diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100'
 
 
 function clearInventory(){
-    $('.diceCount').each(function(){
-        this.value = 0;
+    $('.tableDiceInventory').each(function(){
+        this.remove();
     });
     $('#set').val('');
     diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0 };

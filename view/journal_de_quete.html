@@ -1,0 +1,39 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="application/x-javascript" src="js/journal_de_quete/journal_de_quete.js"></script>
+</head>
+
+<div id="header">
+</div>
+
+<body>
+
+<div class="containerGlobal">
+    <fieldset>
+        <legend><h1 id="titreFieldset">Catégories</h1></legend>
+        <div id="informations_page">
+            <div id="categorie">
+                <ul>
+                    <li class="clickableLi" onclick="smoothTransition('calendrier')"><h2><i class="far fa-calendar-alt"></i> Calendrier</h2></li>
+                    <li class="clickableLi" onclick="smoothTransition('synopsis')"><h2><i class="fas fa-book-reader"></i> Synopsis</h2></li>
+                    <li class="clickableLi" onclick="smoothTransition('map')"><h2><i class="fas fa-map"></i> Carte du monde</h2></li>
+                </ul>
+            </div>
+            <div class="aventure">
+
+            </div>
+        </div>
+    </fieldset>
+</div>
+</body>
+</html>
+
+<script>
+    $(function(){
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+        $('head').append('<link rel="stylesheet" href="journal_de_quete.css">');
+    });
+</script>

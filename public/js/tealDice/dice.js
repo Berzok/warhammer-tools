@@ -276,17 +276,17 @@
     }
 
     this.material_options = {
-        specular: 0x690e0e,
-        color: 0xf0f0f0,
-        shininess: 40,
+        specular: 'rgba(91,89,153,0.5)',            //Couleur de l'éclairage
+        color: 'rgba(240,240,240,0.11)',
+        shininess: 10,
         shading: THREE.FlatShading,
     };
     this.label_color = '#ffea49';
     this.dice_color = '#202020';
-    this.ambient_light_color = 0xf0f5fb;
-    this.spot_light_color = 0xefdfd5;
-    this.selector_back_colors = { color: 0x562a0c, shininess: 0, emissive: 0 };
-    this.desk_color = 0x562a0c;
+    this.ambient_light_color = 'rgba(154,154,154,0.02)';
+    this.spot_light_color = 'rgba(239,233,219,0.23)';
+    this.selector_back_colors = { color: '#562a0c', shininess: 0, emissive: 0 };
+    this.desk_color = '#1f5456';
     this.use_shadows = true;
 
     this.known_types = ['d3', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
@@ -408,7 +408,7 @@
         container.appendChild(this.renderer.domElement);
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFShadowMap;
-        this.renderer.setClearColor(0x228B22, 1);
+        this.renderer.setClearColor('#228B22', 1);
 
         this.reinit(container, dimentions);
 
@@ -496,9 +496,9 @@
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
         this.light = new THREE.SpotLight(that.spot_light_color, 0.8);
-        this.light.position.set(-mw / 2, mw / 2, mw * 2);
+        this.light.position.set(-mw / 3, mw / 2, mw * 2);
         this.light.target.position.set(0, 0, 0);
-        this.light.distance = mw * 8;
+        this.light.distance = mw * 10;
         this.light.castShadow = true;
         this.light.shadowCameraNear = mw / 10;
         this.light.shadowCameraFar = mw * 5;
@@ -510,8 +510,14 @@
         this.scene.add(this.light);
 
         if (this.desk) this.scene.remove(this.desk);
-        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
-                new THREE.MeshPhongMaterial({ color: that.desk_color }));
+        // this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1),
+        //         new THREE.MeshPhongMaterial({ color: that.desk_color }));
+
+        const loader = new THREE.TextureLoader();
+        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1),
+            new THREE.MeshPhongMaterial({ map: loader.load('img/old_wood.jpg')}));
+
+
         this.desk.receiveShadow = that.use_shadows;
         this.scene.add(this.desk);
 

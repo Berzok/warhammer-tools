@@ -35,6 +35,7 @@ body{
 	padding: 0;
 	background-image: url('../img/old_paper.jpg');
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .containerglobal legend{
@@ -52,7 +53,7 @@ fieldset{
 
 #informations_page{
 	text-align: start;
-	margin-top: -4%;
+	margin-top: 1%;
 	/*background-image: url('http://www.blogmais.org/ourimg/big/22/227032_old-paper-wallpaper.jpg');*/
 }
 

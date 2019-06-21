@@ -6,15 +6,16 @@
     align-items: baseline;
 }
 #inventaire{
-    position: fixed;
-    background-image: url('../img/old_paper.jpg');
+    position: sticky;
+    background-image: url('../../img/old_paper.jpg');
     background-repeat: no-repeat;
     background-position: bottom;
-    width: 12%;
-    margin: 9% auto auto 4%;
+    width: 15%;
+    margin: 0 0 0 6%;
     flex: 0 0 auto;
     text-align: center;
     max-height: 100vh;
+    top: 20%;
 }
 .boutonDice{
     width: 48%;

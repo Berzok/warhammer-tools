@@ -25,11 +25,12 @@ app.get('', function (request, response) {
 app.get('/*+[^.][^c][^s][^s]', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
-app.get('/*css', function (request, response) {
+app.get('/*.css', function (request, response) {
     response.sendFile(__dirname + '/public/css' + request['url']);
 });
-app.get('/*js', function (request, response) {
-    response.sendFile(__dirname + 'public/js' + request['url']);
+app.get('/*.js', function (request, response) {
+    console.log(request['url']);
+    response.sendFile(__dirname + '/public/js' + request['url']);
 });
 
 

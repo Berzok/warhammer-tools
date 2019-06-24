@@ -14,7 +14,7 @@ var app = express();
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 app.use(express.static('public/js'));
-
+app.use(express.static('public/res'));
 
 
 // http://expressjs.com/en/starter/basic-routing.html

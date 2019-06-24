@@ -62,7 +62,7 @@
 
         this.init = function(days) {
             this.days = days;
-            for(var i=31; i>0; --i) {
+            for(var i=8; i>0; --i) {
                 if(days[i] !== undefined) {
                     this.nbdays = i;
                     break;
@@ -80,33 +80,22 @@
 
             var $tr = $("<tr>").appendTo($('<thead>').appendTo($table));
 
-            $tr.append("<th class='cl'>Client</th>");
-            if(!this.gin) $tr.append("<th class='co'>Commande</th>");
-            $tr.append("<th class='gin'>GIN</th>");
-
-            for(var i=1; i<=this.nbdays; ++i) {
-                $tr.append("<th class='" + this.getDowClass(i) + "'>" + i + "</th>");
-            }
-
-            $tr.append("<th class='tot'></th>");
+            $tr.append("<th class='weekdays'>Wellentag</th>");
+            $tr.append("<th class='weekdays'>Aubentag</th>");
+            $tr.append("<th class='weekdays'>Marktag</th>");
+            $tr.append("<th class='weekdays'>Backertag</th>");
+            $tr.append("<th class='weekdays'>Bezahltag</th>");
+            $tr.append("<th class='weekdays'>Konistag</th>");
+            $tr.append("<th class='weekdays'>Angestag</th>");
+            $tr.append("<th class='weekdays'>Festag</th>");
 
             $table.append('<tbody>');
 
             $tr = $("<tr>").appendTo($('<tfoot>').appendTo($table));
 
-            if(!this.gin) {
-                $tr.append("<td colspan='3'><input id='comment' placeholder='Commentaire...' " + (this.validation && !this.canValidate ? 'readonly' : '') + "></input></td>");
-            }
-            else {
-                $tr.append("<td colspan='2'>&nbsp;</td>");
-            }
+            $tr.append("<td colspan='3'><input id='comment' placeholder='Commentaire...' " + (this.validation && !this.canValidate ? 'readonly' : '') + "></input></td>");
 
-            for(var i=1; i<=this.nbdays; ++i) {
-                $("<td id='tot-" + i + "' class='" + this.getDowClass(i) + "'></td>")
-                    .data("day", i)
-                    .data("value", 0)
-                    .appendTo($tr);
-            }
+
             $("<td class='tot'></td>").appendTo($tr);
             $tr.data("total", 0);
 
@@ -119,10 +108,7 @@
         this.add = function(data) {
             var $tr = $("<tr>");
 
-            $tr.append("<td class='cl'><input type='text' " + (this.validation && !this.canValidate ? 'disabled' : '') + "></input></td>");
-            $tr.append("<td class='co'><input type='text' " + (this.validation && !this.canValidate ? 'disabled' : '') + "></input></td>");
-            $tr.append("<td class='gin'><input type='text' " + (this.validation && !this.canValidate ? 'disabled' : '') + "></input></td>");
-
+            console.dir(data);
             if(data) {
                 $tr.find('td.cl')
                     .addClass('filled')
@@ -140,9 +126,7 @@
                     .val(data.commande.codeGin);
             }
 
-            var $tot = $("<td class='tot'></td>")
-                .data('value', 0)
-                .appendTo($tr);
+
 
             var total = 0;
             for(var i=1; i<=this.nbdays; ++i) {
@@ -164,7 +148,7 @@
                 }
                 $("<td class='" + this.getDowClass(i) + (commentaire ? " comment" : "") + "'>" + (duree?duree:"") + "</td>")
                     .data("day",i)
-                    .insertBefore($tot);
+                    .insertBefore($tr);
             }
 
             if(data) {
@@ -349,8 +333,14 @@
             }
         }
 
-        $('.loading').show();
-        $.getJSON($.get("/res/events.json"), params, function(data) {
+        //$('.loading').show();
+        $.get('/res/story.txt', function(data) {
+            $('.aventure').append(document.createTextNode(data));
+        }, 'text');
+
+
+        $.getJSON("/res/events.json", null, function(data) {
+            console.dir('aaaaaaaa');
             var days = data["days"];
             var cra = data["cra"];
             self.setDirty(false);
@@ -702,6 +692,7 @@
          */
 
         $('#cra-container').on('click', '#cra td.dow', function onDayClick(e) {
+            console.dir('afsdfsdfdsaaa');
             var td = e.target;
             var $td = $(td);
             if(!$td.hasClass('disabled')) {

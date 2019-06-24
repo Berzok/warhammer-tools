@@ -24,12 +24,12 @@
     border: none;
     cursor: pointer;
 }
-#throw{
+#calendarButton{
     color: #744eed;
     font-size: 20px;
     background: rgba(255, 249, 242, 0.36);
 }
-#clear{
+#logButton{
     color: #ed2b00;
     font-size: 20px;
     background: rgba(255, 249, 242, 0.36);
@@ -70,6 +70,10 @@
     width: 100%;
 }
 
+
+.containerGlobal{
+    width: 55%;
+}
 .containerGlobal > fieldset{
     height: 100%;
 }
@@ -83,3 +87,17 @@
 
 }
 
+#cra-container input{
+    background-color: #744eed;
+}
+
+#datepicker{
+    border: 1px solid darkolivegreen;
+    background-color: rgba(1, 1, 1, 0);
+    color: rgba(1, 1, 1, 0.9);
+    margin: 20px auto 15px auto;
+    -moz-user-select: none;
+}
+#ui-datepicker-div{
+    display: table;
+}

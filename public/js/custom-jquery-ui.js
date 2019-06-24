@@ -7236,8 +7236,8 @@ function Datepicker() {
 		prevText: "Prev", // Display text for previous month link
 		nextText: "Next", // Display text for next month link
 		currentText: "Today", // Display text for current month link
-		monthNames: [ "January","February","March","April","May","June",
-			"July","August","September","October","November","December" ], // Names of months for drop-down and formatting
+		monthNames: [ "Nachexen", "Jahrdrung", "Pflugzeit", "Sigmarzeit", "Sommerzeit", "Vorgeheim",
+			"Nachgeheim", "Erntezeit", "Brauzeit", "Kaldezeit", "Ulriczeit", "Vorhexen" ], // Names of months for drop-down and formatting
 		monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ], // For formatting
 		dayNames: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ], // For formatting
 		dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ], // For formatting
@@ -8260,12 +8260,12 @@ $.extend( Datepicker.prototype, {
 			checkDate = new Date( date.getTime() );
 
 		// Find Thursday of this week starting on Monday
-		checkDate.setDate( checkDate.getDate() + 4 - ( checkDate.getDay() || 7 ) );
+		checkDate.setDate( checkDate.getDate() + 4 - ( checkDate.getDay() || 8 ) );
 
 		time = checkDate.getTime();
 		checkDate.setMonth( 0 ); // Compare with Jan 1
 		checkDate.setDate( 1 );
-		return Math.floor( Math.round( ( time - checkDate ) / 86400000 ) / 7 ) + 1;
+		return Math.floor( Math.round( ( time - checkDate ) / 86400000 ) / 8 ) + 1;
 	},
 
 	/* Parse a string value into a date object.
@@ -8463,7 +8463,7 @@ $.extend( Datepicker.prototype, {
 	TIMESTAMP: "@",
 	W3C: "yy-mm-dd", // ISO 8601
 
-	_ticksTo1970: ( ( ( 1970 - 1 ) * 365 + Math.floor( 1970 / 4 ) - Math.floor( 1970 / 100 ) +
+	_ticksTo1970: ( ( ( 1970 - 1 ) * 400 + Math.floor( 1970 / 4 ) - Math.floor( 1970 / 100 ) +
 		Math.floor( 1970 / 400 ) ) * 24 * 60 * 60 * 10000000 ),
 
 	/* Format a date object into a string value.
@@ -8921,9 +8921,9 @@ $.extend( Datepicker.prototype, {
 					"</div><table class='ui-datepicker-calendar'><thead>" +
 					"<tr>";
 				thead = ( showWeek ? "<th class='ui-datepicker-week-col'>" + this._get( inst, "weekHeader" ) + "</th>" : "" );
-				for ( dow = 0; dow < 7; dow++ ) { // days of the week
-					day = ( dow + firstDay ) % 7;
-					thead += "<th scope='col'" + ( ( dow + firstDay + 6 ) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "" ) + ">" +
+				for ( dow = 0; dow < 8; dow++ ) { // days of the week
+					day = ( dow + firstDay ) % 8;
+					thead += "<th scope='col'" + ( ( dow + firstDay + 7 ) % 8 >= 6 ? " class='ui-datepicker-week-end'" : "" ) + ">" +
 						"<span title='" + dayNames[ day ] + "'>" + dayNamesMin[ day ] + "</span></th>";
 				}
 				calender += thead + "</tr></thead><tbody>";
@@ -8931,7 +8931,7 @@ $.extend( Datepicker.prototype, {
 				if ( drawYear === inst.selectedYear && drawMonth === inst.selectedMonth ) {
 					inst.selectedDay = Math.min( inst.selectedDay, daysInMonth );
 				}
-				leadDays = ( this._getFirstDayOfMonth( drawYear, drawMonth ) - firstDay + 7 ) % 7;
+				leadDays = ( this._getFirstDayOfMonth( drawYear, drawMonth ) - firstDay + 8 ) % 8;
 				curRows = Math.ceil( ( leadDays + daysInMonth ) / 7 ); // calculate the number of rows to generate
 				numRows = ( isMultiMonth ? this.maxRows > curRows ? this.maxRows : curRows : curRows ); //If multiple months, use the higher number of rows (see #7043)
 				this.maxRows = numRows;
@@ -8940,14 +8940,14 @@ $.extend( Datepicker.prototype, {
 					calender += "<tr>";
 					tbody = ( !showWeek ? "" : "<td class='ui-datepicker-week-col'>" +
 						this._get( inst, "calculateWeek" )( printDate ) + "</td>" );
-					for ( dow = 0; dow < 7; dow++ ) { // create date picker days
+					for ( dow = 0; dow < 8; dow++ ) { // create date picker days
 						daySettings = ( beforeShowDay ?
 							beforeShowDay.apply( ( inst.input ? inst.input[ 0 ] : null ), [ printDate ] ) : [ true, "" ] );
 						otherMonth = ( printDate.getMonth() !== drawMonth );
 						unselectable = ( otherMonth && !selectOtherMonths ) || !daySettings[ 0 ] ||
 							( minDate && printDate < minDate ) || ( maxDate && printDate > maxDate );
 						tbody += "<td class='" +
-							( ( dow + firstDay + 6 ) % 7 >= 5 ? " ui-datepicker-week-end" : "" ) + // highlight weekends
+							( ( dow + firstDay + 7 ) % 8 >= 7 ? " ui-datepicker-week-end" : "" ) + // highlight weekends
 							( otherMonth ? " ui-datepicker-other-month" : "" ) + // highlight days from other months
 							( ( printDate.getTime() === selectedDate.getTime() && drawMonth === inst.selectedMonth && inst._keyEvent ) || // user pressed key
 							( defaultDate.getTime() === printDate.getTime() && defaultDate.getTime() === selectedDate.getTime() ) ?
@@ -8968,6 +8968,7 @@ $.extend( Datepicker.prototype, {
 							"' href='#'>" + printDate.getDate() + "</a>" ) ) + "</td>"; // display selectable date
 						printDate.setDate( printDate.getDate() + 1 );
 						printDate = this._daylightSavingAdjust( printDate );
+						console.dir('aaaa: ' + printDate.getDate());
 					}
 					calender += tbody + "</tr>";
 				}
@@ -9105,7 +9106,16 @@ $.extend( Datepicker.prototype, {
 
 	/* Find the number of days in a given month. */
 	_getDaysInMonth: function( year, month ) {
-		return 32 - this._daylightSavingAdjust( new Date( year, month, 32 ) ).getDate();
+		switch(month){
+			case 0: return 32;
+			case 1: return 34;
+			case 4: return 34;
+			case 7: return 34;
+			case 8: return 34;
+			case 11: return 34;
+			default: return 33;
+		}
+		// return 34 - this._daylightSavingAdjust( new Date( year, month, 32 ) ).getDate();
 	},
 
 	/* Find the day of the week of the first of a month. */

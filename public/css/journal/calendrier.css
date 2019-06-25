@@ -1,0 +1,11 @@
+
+#cra td{
+    border: 1px solid #666666;
+}
+
+.dow{
+    width: 20px;
+    line-height: 20px;
+    height: 25px;
+    background-color: rgba(132, 114, 72, 0.7);
+}

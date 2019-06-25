@@ -8944,8 +8944,9 @@ $.extend( Datepicker.prototype, {
 						daySettings = ( beforeShowDay ?
 							beforeShowDay.apply( ( inst.input ? inst.input[ 0 ] : null ), [ printDate ] ) : [ true, "" ] );
 						otherMonth = ( printDate.getMonth() !== drawMonth );
-						unselectable = ( otherMonth && !selectOtherMonths ) || !daySettings[ 0 ] ||
-							( minDate && printDate < minDate ) || ( maxDate && printDate > maxDate );
+						// unselectable = ( otherMonth && !selectOtherMonths ) || !daySettings[ 0 ] ||
+						// 	( minDate && printDate < minDate ) || ( maxDate && printDate > maxDate );
+                        unselectable = null;
 						tbody += "<td class='" +
 							( ( dow + firstDay + 7 ) % 8 >= 7 ? " ui-datepicker-week-end" : "" ) + // highlight weekends
 							( otherMonth ? " ui-datepicker-other-month" : "" ) + // highlight days from other months
@@ -8966,9 +8967,9 @@ $.extend( Datepicker.prototype, {
 							( printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "" ) + // highlight selected day
 							( otherMonth ? " ui-priority-secondary" : "" ) + // distinguish dates from other months
 							"' href='#'>" + printDate.getDate() + "</a>" ) ) + "</td>"; // display selectable date
+                        console.dir('Cellule: ' + tbody);
 						printDate.setDate( printDate.getDate() + 1 );
 						printDate = this._daylightSavingAdjust( printDate );
-						console.dir('aaaa: ' + printDate.getDate());
 					}
 					calender += tbody + "</tr>";
 				}

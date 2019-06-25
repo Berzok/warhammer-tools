@@ -24,8 +24,19 @@
 
 
     <div class="containerGlobal">
+        <input type="hidden" id="defaultMonth" value="6">
+        <input type="hidden" id="defaultYear" value="2512">
         <fieldset>
             <legend><h1 id="titreFieldset">Contenu</h1></legend>
+            <div class="row-fluid" style="text-align: center;">
+                <h1>
+                    <small id="changemonth">
+                        <a id="prevmonth" href=""><i class="fas fa-angle-double-left"></i></a>
+                        <span>####</span>
+                        <a id="nextmonth" href=""><i class="fas fa-angle-double-right"></i></a>
+                    </small>
+                </h1>
+            </div>
             <div id="informations_page">
                 <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
                 <div id="content">
@@ -48,5 +59,6 @@
         $("#header").load("/header.html");
         $("#footer").load("/footer.html");
         $('head').append('<link rel="stylesheet" href="/css/journal/journal.css">');
+        $('head').append('<link rel="stylesheet" href="/css/journal/calendrier.css">');
     });
 </script>

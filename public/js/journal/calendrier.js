@@ -5,6 +5,8 @@
         var ms = ["","Nachexen", "Jarhdrung.", "Pflugzeit", "Sigmarzeit", "Sommerzeit", "Vorgeheim", "Nachgeheim", "Erntezeit", "Brauzeit", "Kaldezeit", "Ulriczeit", "Vorhexen"];
 
         this.$container = $container;
+        this.currentMonth = null;
+        this.currentYear = null;
         this.$table = null;
         this.days = null;
         this.nbdays = null;
@@ -16,8 +18,8 @@
         this.canValidate = this.$container.data("can-validate") ? true : false;
         this.getLoadParams = function() {
             return {
-                annee: this.$container.data("annee")
-                ,mois: this.$container.data("mois")
+                annee: $('#defaultYear').val()
+                ,mois: $('#defaultMonth').val()
                 ,_: $.now() // IE est une grosse roulure sur les GET et sa gestion du cache
             };
         };
@@ -89,7 +91,8 @@
             $tr.append("<th class='weekdays'>Angestag</th>");
             $tr.append("<th class='weekdays'>Festag</th>");
 
-            $table.append('<tbody>');
+
+            $table.append('<tbody id="table-body">');
 
             $tr = $("<tr>").appendTo($('<tfoot>').appendTo($table));
 
@@ -101,6 +104,14 @@
 
             this.$table = $table.appendTo($container.empty());
 
+            for(let i=0; i<5; i++){
+                $('<tr id="tr_number_'+i+'">').appendTo($('#cra tbody'));
+                for(let j=0; j<8; j++){
+                    $('<td class="dow">').appendTo($('#tr_number_'+i+''));
+                }
+            }
+
+
             // changement du texte pour le mois selectionné
             $('#changemonth').children('span').html(this.getAnneeMoisString());
         };
@@ -108,55 +119,18 @@
         this.add = function(data) {
             var $tr = $("<tr>");
 
-            console.dir(data);
-            if(data) {
-                $tr.find('td.cl')
-                    .addClass('filled')
-                    .children('input')
-                    .val(data.commande.client.libelle);
 
-                $tr.find('td.co')
-                    .addClass('filled')
-                    .children('input')
-                    .val(data.commande.libelle);
+            let cells = $('#cra tbody').find('td');
+            $.getJSON('/res/yearStructure.json', this.$container, function(data, text, jqXHR){
+                this.yearStructure = jqXHR.responseText;
+                this.yearStructure = JSON.parse(this.yearStructure);
 
-                $tr.find('td.gin')
-                    .addClass('filled')
-                    .children('input')
-                    .val(data.commande.codeGin);
-            }
+                let currentMonth = this.yearStructure.month[$container.data("mois")];
 
-
-
-            var total = 0;
-            for(var i=1; i<=this.nbdays; ++i) {
-                var duree = "";
-                var commentaire = "";
-                if(data) {
-                    var intervention = data.interventions[i];
-                    if(intervention) {
-                        if(intervention.commentaire) {
-                            commentaire = intervention.commentaire;
-                        }
-
-                        duree = parseFloat(intervention.duree);
-                        intervention.duree = duree;
-                        total += duree;
-
-                        this.updateSummaries($tr, i, duree);
-                    }
+                for(let i=currentMonth.firstDay; i<currentMonth.daysCount; i++){
+                    cells[i].innerText = i;
                 }
-                $("<td class='" + this.getDowClass(i) + (commentaire ? " comment" : "") + "'>" + (duree?duree:"") + "</td>")
-                    .data("day",i)
-                    .insertBefore($tr);
-            }
-
-            if(data) {
-                $tr.data('js', data)
-                    .data('idClient', data.commande.client.id)
-                    .data('idCommande', data.commande.id)
-                    .data('active', 1);
-            }
+            });
 
             $tr.appendTo(this.$table.children('tbody'));
         };
@@ -214,7 +188,6 @@
             }
 
             self.init(days);
-
             var commandes = cra.commandes;
             var add = this.add;
             if(this.gin) {
@@ -340,10 +313,16 @@
 
 
         $.getJSON("/res/events.json", null, function(data) {
-            console.dir('aaaaaaaa');
             var days = data["days"];
             var cra = data["cra"];
             self.setDirty(false);
+
+
+            sessionStorage.setItem('currentYear', params.annee);
+            self.currentYear = params.annee;
+
+            sessionStorage.setItem('currentMonth', params.mois);
+            self.currentMonth = params.mois;
 
             self.$container.data("annee", params.annee);
             self.$container.data("mois", params.mois);
@@ -692,7 +671,6 @@
          */
 
         $('#cra-container').on('click', '#cra td.dow', function onDayClick(e) {
-            console.dir('afsdfsdfdsaaa');
             var td = e.target;
             var $td = $(td);
             if(!$td.hasClass('disabled')) {

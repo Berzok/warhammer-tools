@@ -14,44 +14,19 @@
           }
         },
         "interventions": {
-          "11": {
+          "1": {
             "duree": "0.50",
             "commentaire": null
           },
-          "12": {
+          "3": {
             "duree": "2.00",
             "commentaire": "Pas le temps pas le temps"
           },
-          "13": {
+          "4": {
             "duree": "2.00",
             "commentaire": null
           },
-          "14": {
-            "duree": "1.00",
-            "commentaire": null
-          }
-        }
-      },
-      "1144": {
-        "commande": {
-          "id": 1144,
-          "libelle": "Maternit\u00e9",
-          "codeGin": "MT",
-          "client": {
-            "id": 16,
-            "libelle": "VIVERIS"
-          }
-        },
-        "interventions": {
-          "12": {
-            "duree": "2.00",
-            "commentaire": null
-          },
-          "13": {
-            "duree": "2.00",
-            "commentaire": null
-          },
-          "14": {
+          "5": {
             "duree": "1.00",
             "commentaire": null
           }
@@ -67,28 +42,6 @@
     "5": true,
     "6": true,
     "7": true,
-    "8": false,
-    "9": false,
-    "10": false,
-    "11": true,
-    "12": true,
-    "13": true,
-    "14": true,
-    "15": false,
-    "16": false,
-    "17": true,
-    "18": true,
-    "19": true,
-    "20": true,
-    "21": true,
-    "22": false,
-    "23": false,
-    "24": true,
-    "25": true,
-    "26": true,
-    "27": true,
-    "28": true,
-    "29": false,
-    "30": false
+    "8": false
   }
 }

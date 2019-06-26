@@ -1,6 +1,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script type="application/x-javascript" src="journal.js"></script>
     <script type="application/x-javascript" src="calendrier.js"></script>
@@ -17,8 +18,8 @@
     <div class="flexDiv" class="sideMenu" id="inventaire">
         <fieldset>
             <legend><h1>Catégories</h1></legend>
-            <button id="throw" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br /> Synopsis</button>
-            <button id="clear" class="boutonDice clickableLi"><i class="fas fa-map"></i><br />Carte</button>
+            <button id="calendarButton" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br /> Synopsis</button>
+            <button id="logButton" class="boutonDice clickableLi"><i class="fas fa-map"></i><br />Carte</button>
         </fieldset>
     </div>
 
@@ -31,9 +32,9 @@
             <div class="row-fluid" style="text-align: center;">
                 <h1>
                     <small id="changemonth">
-                        <a id="prevmonth" href=""><i class="fas fa-angle-double-left"></i></a>
+                        <a id="prevmonth" href=""><i class="fas fa-angle-double-left month-change"></i></a>
                         <span>####</span>
-                        <a id="nextmonth" href=""><i class="fas fa-angle-double-right"></i></a>
+                        <a id="nextmonth" href=""><i class="fas fa-angle-double-right month-change"></i></a>
                     </small>
                 </h1>
             </div>
@@ -42,6 +43,10 @@
                 <div id="content">
                     <div id="cra-container">
 
+                    </div>
+                    <br /><br /><br />
+                    <div id="pesterlog">
+                        aaa
                     </div>
                     <br />
                 </div>
@@ -61,4 +66,14 @@
         $('head').append('<link rel="stylesheet" href="/css/journal/journal.css">');
         $('head').append('<link rel="stylesheet" href="/css/journal/calendrier.css">');
     });
+
+    $('#pesterlog').on('wheel', function(e){
+        wheelEvent = e.originalEvent;
+        if(wheelEvent.deltaY <= 0){
+            let mgTop = $('#containerGeneral').css('margin-top')
+            console.log(mgTop);
+            $('#containerGeneral').css('margin-top', (mgTop+10)+'%');
+        }
+    })
+
 </script>

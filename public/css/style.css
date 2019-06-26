@@ -29,6 +29,7 @@ body{
 
 .containerGlobal{
 	text-align: center;
+	border: 2px solid #511b13;
 	margin: 9% auto 5% auto;
 	min-height: 60%;
 	padding: 0;
@@ -59,6 +60,7 @@ fieldset{
 
 .flexDiv{
 	margin-top: 6%;
+	border: 2px solid #511b13;
 }
 .flexDiv legend, .flexDiv fieldset, .flexDiv legend h2{
 	flex: 0 1 30%;

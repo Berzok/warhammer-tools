@@ -1,11 +1,35 @@
 
-#cra td{
-    border: 1px solid #666666;
+#cra{
+    -moz-user-select: none;
 }
+
+
+#cra td, #cra th{
+    border: 1px solid #666666;
+    font-family: 'MedievalSharp', cursive;
+}
+#cra th{
+    border-top: none;
+}
+
+
+.month-change{
+    color: #1f2f69;
+}
+
 
 .dow{
     width: 20px;
     line-height: 20px;
     height: 25px;
     background-color: rgba(132, 114, 72, 0.7);
+}
+.dow:hover{
+    background-color: rgba(0, 136, 19, 0.15);
+}
+.selected{
+    background-color: rgba(0, 136, 19, 0.30);
+}
+.today{
+    background-color: rgba(46, 150, 146, 0.54)
 }

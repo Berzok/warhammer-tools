@@ -36,12 +36,6 @@
 }
 
 
-.containerGlobal{
-    display: flex;
-    flex-direction: column;
-    width: 55%;
-}
-
 
 #informations_page{
     display: flex;
@@ -53,6 +47,15 @@
     flex: 0 0 20%;
     margin-right: 1%;
 }
+
+body{
+    overflow: hidden;
+}
+.containerGlobal{
+    width: 60%;
+    max-width: 60%;
+}
+
 
 
 .aventure{
@@ -71,9 +74,6 @@
 }
 
 
-.containerGlobal{
-    width: 55%;
-}
 .containerGlobal > fieldset{
     height: 100%;
 }

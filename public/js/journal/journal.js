@@ -1,13 +1,5 @@
 
 
-$('li').each(this, function(){
-    this.on('click', function(){
-        console.log('aaa');
-        smoothTransition(this.attr('name'));
-    });
-    console.log('aaaa');
-    console.dir((this).getFirstNode().attr('style', 'cursor: pointer'));
-});
 
 
 function smoothTransition(categorie){
@@ -18,8 +10,8 @@ function smoothTransition(categorie){
         case 'synopsis': createSynopsis();
         case 'map': createMap();
     }
-
 }
+
 
 function createCalendar(calendarCallback){
 
@@ -55,13 +47,6 @@ function createCalendar(calendarCallback){
 }
 
 
-function calendarCallback(){
-    var calendrier = $('#calendrier');
-    var calendar = calendrier.contents().find('#calendar_container');
-    console.log(calendar);
-}
-
-
 function createSynopsis(){
     return;
 }
@@ -69,3 +54,14 @@ function createSynopsis(){
 function createMap(){
     return;
 }
+
+
+$(document).ready(function(){
+    $('#calendarButton').on('click', function(){
+        window.location.replace('calendrier.html');
+    });
+});
+
+
+
+

@@ -3,7 +3,28 @@
 
 // init project
 var express = require('express');
+const fs = require('fs');
+
+
+
 var app = express();
+
+
+
+
+function writeToJson(filepath, data){
+    var fileName = filepath;
+    var file = JSON.parse(fs.readFileSync(filepath));
+
+    file.key = "new value";
+
+    fs.writeFileSync(fileName, JSON.stringify(file, null, 2), function (err) {
+        if (err) return console.log(err);
+        console.log(JSON.stringify(file));
+        console.log('writing to ' + fileName);
+    });
+}
+
 
 // we've started you off with Express,
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -32,6 +53,10 @@ app.get('/*.js', function (request, response) {
     console.log(request['url']);
     response.sendFile(__dirname + '/public/js' + request['url']);
 });
+app.get('/writeToJSON*', function(request, response){
+    console.dir(request.parameters);
+    writeToJson();
+})
 
 
 // listen for requests :)

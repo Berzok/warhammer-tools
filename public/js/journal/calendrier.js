@@ -3,10 +3,10 @@
     var Cra = function Cra($container) {
 
         var ms = ["","Nachexen", "Jarhdrung.", "Pflugzeit", "Sigmarzeit", "Sommerzeit", "Vorgeheim", "Nachgeheim", "Erntezeit", "Brauzeit", "Kaldezeit", "Ulriczeit", "Vorhexen"];
-
         this.$container = $container;
-        this.currentMonth = null;
         this.currentYear = null;
+        this.currentMonth = null;
+        this.now = null;
         this.$table = null;
         this.days = null;
         this.nbdays = null;
@@ -16,12 +16,20 @@
         this.validation = false;
         this.currentUser = this.$container.data("current-user");
         this.canValidate = this.$container.data("can-validate") ? true : false;
-        this.getLoadParams = function() {
-            return {
-                annee: $('#defaultYear').val()
-                ,mois: $('#defaultMonth').val()
-                ,_: $.now() // IE est une grosse roulure sur les GET et sa gestion du cache
-            };
+        this.getLoadParams = async function() {
+            let data2;
+            var self = this;
+            data2 = $.getJSON('/res/yearStructure.json', data2, function(data, text, jqXHR){
+                data2 = jqXHR.responseText;
+                data2 = JSON.parse(data2);
+                return this.yearStructure;
+            }).then(function(){
+                return {
+                    annee: self.currentYear
+                    ,mois: self.currentMonth
+                    ,_: $.now() // IE est une grosse roulure sur les GET et sa gestion du cache
+                };
+            });
         };
 
         this.getAnnee = function() {
@@ -37,6 +45,13 @@
             var mois = this.getMois();
 
             return ms[mois] + " " + annee;
+        };
+
+        this.getSlashDate = function(){
+            let annee = this.currentYear;
+            let mois = this.currentMonth;
+            let jour = this.currentDay;
+            return jour + '-' + mois + '-' + annee;
         };
 
         this.getDowClass = function(day) {
@@ -96,11 +111,6 @@
 
             $tr = $("<tr>").appendTo($('<tfoot>').appendTo($table));
 
-            $tr.append("<td colspan='3'><input id='comment' placeholder='Commentaire...' " + (this.validation && !this.canValidate ? 'readonly' : '') + "></input></td>");
-
-
-            $("<td class='tot'></td>").appendTo($tr);
-            $tr.data("total", 0);
 
             this.$table = $table.appendTo($container.empty());
 
@@ -117,18 +127,23 @@
         };
 
         this.add = function(data) {
+            var self = this;
             var $tr = $("<tr>");
 
 
             let cells = $('#cra tbody').find('td');
-            $.getJSON('/res/yearStructure.json', this.$container, function(data, text, jqXHR){
-                this.yearStructure = jqXHR.responseText;
-                this.yearStructure = JSON.parse(this.yearStructure);
+            $.getJSON('/res/yearStructure.json', null, function(data, text, jqXHR){
 
-                let currentMonth = this.yearStructure.month[$container.data("mois")];
+                let currentMonth = self.currentMonth;
+                let firstDay = self.yearStructure.month[currentMonth].firstDay;
+                let dayCount = self.yearStructure.month[currentMonth].daysCount;
 
-                for(let i=currentMonth.firstDay; i<currentMonth.daysCount; i++){
-                    cells[i].innerText = i;
+                for(let i=firstDay; i<dayCount+firstDay; i++){
+                    cells[i].innerText = i-firstDay+1;
+                    cells[i].setAttribute('id', (i-firstDay+1)+'-'+$container.data("mois")+'-'+$container.data("annee"));
+                    if(cells[i].id === self.now){
+                        $(cells[i]).addClass('today');
+                    }
                 }
             });
 
@@ -294,10 +309,43 @@
         }
     };
 
-    Cra.prototype.load = function(params) {
+    Cra.prototype.load = async function(params) {
         var self = this;
 
-        params = jQuery.extend(this.getLoadParams(), params);
+        params = $.extend(this.getLoadParams(), params);
+        let data2;
+        $.getJSON('/res/yearStructure.json', data2, function(data, text, jqXHR){
+            data2 = jqXHR.responseText;
+            data2 = JSON.parse(data2);
+            self.yearStructure = data2;
+            if(!self.currentMonth){
+                self.currentYear = data2.currentDate.year;
+                self.currentMonth = data2.currentDate.month;
+                self.now = data2.currentDate.day + '-' + data2.currentDate.month + '-' + data2.currentDate.year;
+            }
+        }).then(function(){
+            $.getJSON("/res/events2.json", null, function (data) {
+                var days = data["days"];
+                var cra = data["cra"];
+                self.setDirty(false);
+
+                self.$container.data("annee", self.currentYear);
+                self.$container.data("mois", self.currentMonth);
+                self.$container.data("utilisateur", params.utilisateur);
+
+
+                self.build(days, cra);
+            })
+                .fail(function () {
+                    window.alert("Une erreur inattendue s'est produite au chargement.");
+                })
+                .always(function () {
+                    setTimeout(function () {
+                        $('.loading').hide();
+                    }, 1800)
+                });
+        });
+
 
         if(this.isDirty()) {
             if(!confirm("Il y a actuellement des modifications non enregistrées. Êtes-vous sure de vouloir quitter ce CRA ?")) {
@@ -310,34 +358,6 @@
         $.get('/res/story.txt', function(data) {
             $('.aventure').append(document.createTextNode(data));
         }, 'text');
-
-
-        $.getJSON("/res/events.json", null, function(data) {
-            var days = data["days"];
-            var cra = data["cra"];
-            self.setDirty(false);
-
-
-            sessionStorage.setItem('currentYear', params.annee);
-            self.currentYear = params.annee;
-
-            sessionStorage.setItem('currentMonth', params.mois);
-            self.currentMonth = params.mois;
-
-            self.$container.data("annee", params.annee);
-            self.$container.data("mois", params.mois);
-            self.$container.data("utilisateur", params.utilisateur);
-
-            self.build(days, cra);
-        })
-            .fail(function() {
-                window.alert("Une erreur inattendue s'est produite au chargement.");
-            })
-            .always(function() {
-                setTimeout(function(){
-                    $('.loading').hide();
-                }, 1800)
-            });
     };
 
     Cra.prototype.changeUtilisateur = function(utilisateur) {
@@ -368,6 +388,8 @@
         } else {
             mois++;
         }
+        this.currentMonth = mois;
+        this.currentYear = annee;
 
         this.load({ annee: annee, mois: mois });
     };
@@ -382,6 +404,8 @@
         } else {
             mois--;
         }
+        this.currentMonth = mois;
+        this.currentYear = annee;
 
         this.load({ annee: annee, mois: mois });
     };
@@ -671,51 +695,21 @@
          */
 
         $('#cra-container').on('click', '#cra td.dow', function onDayClick(e) {
+            $('td.selected').removeClass('selected');
             var td = e.target;
             var $td = $(td);
-            if(!$td.hasClass('disabled')) {
-                var $tr = $td.parent();
-                var data = $tr.data('js');
+            $td.addClass('selected');
 
-                if($tr.data('active')) {
-                    var day = $td.data('day');
-
-                    var intervention = data.interventions[day];
-                    if(!intervention) {
-                        intervention = { duree: 0 };
-                        data.interventions[day] = intervention;
-                    }
-
-                    $('#cra td.dow.selected').removeClass('selected');
-                    $td.addClass('selected');
-
-                    if(!($('#commentMode').is(':checked'))){
-                        if (!e.ctrlKey && (!cra.validation || cra.canValidate)) {
-                            var oldval = intervention.duree;
-
-                            if (intervention.duree === 2) {
-                                intervention.duree = 0;
-                            } else {
-                                intervention.duree += palier.get();
-                                if (intervention.duree > 2) {
-                                    intervention.duree = 2;
-                                }
-                            }
-
-                            var newval = intervention.duree ? intervention.duree : '';
-
-                            $td.html(newval);
-
-                            cra.updateSummaries($tr, day, newval - oldval);
-                        }
-                    }
-
-                    cra.setDirty(true);
-                    var $comment = $('#comment');
-                    $comment.data("js", intervention);
-                    $comment.val(intervention.commentaire);
-                }
-            }
+            $.getJSON("/res/events.json", null, function (data, textStatus, jqXHR) {
+                var dayId = $td.attr('id');
+                let events;
+                events = jqXHR.responseText;
+                events = JSON.parse(events);
+                var event = events[dayId];
+                $.get(event.filepath, function (data) {
+                    $('#pesterlog').append(data);
+                }, 'text');
+            });
         });
 
         $('#cra-container').on("keyup", "#comment", function onCommentInputChange() {

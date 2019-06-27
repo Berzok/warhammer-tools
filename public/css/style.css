@@ -1,5 +1,6 @@
 
 body{
+	font-family: 'MedievalSharp', cursive;
 	background-image: url('../img/altdorf_city.jpg');
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -15,8 +16,7 @@ body{
 	max-width: 100%;
 	border-bottom: 8px solid #01796F;
 	position: fixed;
-	overflow: hidden;
-	background-color: #EEEEEE;
+	background-image: url('../img/old_paper.jpg');
 	text-align: center;
 }
 #header_ul{
@@ -25,12 +25,20 @@ body{
 	justify-content: space-evenly;
 	font-size: 24px;
 }
+.clickableLi i{
+	margin-right: 5px;
+	margin-left: 5px;
+}
 
 
+
+#containerGeneral{
+	margin-top: 10%;
+}
 .containerGlobal{
 	text-align: center;
 	border: 2px solid #511b13;
-	margin: 9% auto 5% auto;
+	margin: auto auto 5% auto;
 	min-height: 60%;
 	padding: 0;
 	background-image: url('../img/old_paper.jpg');

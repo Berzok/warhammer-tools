@@ -696,6 +696,13 @@
 
         $('#cra-container').on('click', '#cra td.dow', function onDayClick(e) {
             $('td.selected').removeClass('selected');
+            $('#champ-aventure-edit')
+                .empty()
+                .hide();
+            initPesterlog();
+            $('#aventure-text')
+                .empty()
+                .hide();
             var td = e.target;
             var $td = $(td);
             $td.addClass('selected');
@@ -705,10 +712,21 @@
                 let events;
                 events = jqXHR.responseText;
                 events = JSON.parse(events);
+                $('#aventure-text').attr('class', dayId);
                 var event = events[dayId];
-                $.get(event.filepath, function (data) {
-                    $('#pesterlog').append(data);
-                }, 'text');
+                if(event){
+                    $.get(event.filepath, function (data) {
+                        $('#aventure-text')
+                            .show()
+                            .append(data)
+                            .show();
+                    }, 'text');
+                } else{
+                    $('#aventure-text')
+                        .show()
+                        .append('')
+                        .show();
+                }
             });
         });
 
@@ -806,4 +824,17 @@ function hideMessage(){
     setTimeout(function () {
         $('#containerEdit').hide();
     }, 2950);
+}
+
+function initPesterlog(){
+    $('#editAventure').on('click', function (){
+        var champEdit = $('#champ-aventure-edit');
+        var ventureLog = $('#aventure-text');
+        let content = ventureLog.text();
+        ventureLog.hide();
+        champEdit
+            .show()
+            .append(content);
+        $('#aventure-text-edit').show();
+    });
 }

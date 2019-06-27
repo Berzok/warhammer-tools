@@ -12,17 +12,28 @@ var app = express();
 
 
 
-function writeToJson(filepath, data){
+function writeToJson(clef, date, filepath){
     var fileName = filepath;
     var file = JSON.parse(fs.readFileSync(filepath));
+    console.log(clef);
+    console.log(date);
+    console.log(filepath);
 
-    file.key = "new value";
+    let data = '{titre: 3242, date:'+date+',filepath:'+filepath+'},';
+
+    file.clef = data;
+
 
     fs.writeFileSync(fileName, JSON.stringify(file, null, 2), function (err) {
         if (err) return console.log(err);
         console.log(JSON.stringify(file));
         console.log('writing to ' + fileName);
     });
+}
+
+function writeToFile(filepath, data){
+    fs.writeFile(filepath, data);
+    console.dir(data);
 }
 
 
@@ -43,7 +54,7 @@ app.get('', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
 
-app.get('/*+[^.][^c][^s][^s]', function (request, response) {
+app.get('/*+[^writeTo][^.][^c][^s][^s]', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
 app.get('/*.css', function (request, response) {
@@ -54,9 +65,11 @@ app.get('/*.js', function (request, response) {
     response.sendFile(__dirname + '/public/js' + request['url']);
 });
 app.get('/writeToJSON*', function(request, response){
-    console.dir(request.parameters);
-    writeToJson();
-})
+    writeToJson(request.query.key, request.query.date, request.query.filepath);
+});
+app.get('/writeToFile*', function(request, response){
+    writeToFile(request.query.filepath, request.query.data);
+});
 
 
 // listen for requests :)

@@ -1,6 +1,12 @@
 
+
+#content{
+    flex: 1 0 0;
+}
+
 #cra{
     -moz-user-select: none;
+    width: 100%;
 }
 
 
@@ -33,3 +39,40 @@
 .today{
     background-color: rgba(46, 150, 146, 0.54)
 }
+
+
+
+
+
+#pesterlog{
+    font-family: 'MedievalSharp';
+    font-size: 24px;
+}
+#editAventure{
+    margin-bottom: 12px;
+}
+#aventure-text{
+    display: none;
+    background-color: rgba(162, 147, 99, 0.6);
+    border: 1px solid gray;
+}
+#aventure-text-edit{
+    display: none;
+    background-color: rgba(1, 1, 1, 0.7);
+}
+#champ-aventure-edit{
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

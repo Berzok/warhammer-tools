@@ -13,13 +13,12 @@
 <body>
 
 
-<div id="containerGeneral">
+<div id="containerGeneral" style="margin-top: 10%">
 
     <div class="flexDiv" class="sideMenu" id="inventaire">
         <fieldset>
-            <legend><h1>Catégories</h1></legend>
-            <button id="calendarButton" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br /> Synopsis</button>
-            <button id="logButton" class="boutonDice clickableLi"><i class="fas fa-map"></i><br />Carte</button>
+            <legend><h1>Détails</h1></legend>
+
         </fieldset>
     </div>
 
@@ -42,11 +41,15 @@
                 <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
                 <div id="content">
                     <div id="cra-container">
-
                     </div>
                     <br /><br /><br />
                     <div id="pesterlog">
-                        aaa
+                        <i class="fas fa-pen" id="editAventure" style="margin-bottom: 15px"></i>
+                        <i class="fas fa-save" id="saveAdventure" style="margin-bottom: 15px"></i>
+                        <div id="aventure-text"></div>
+                        <div id="aventure-text-edit">
+                            <textarea rows="50" cols="1" id="champ-aventure-edit"></textarea>
+                        </div>
                     </div>
                     <br />
                 </div>
@@ -67,13 +70,66 @@
         $('head').append('<link rel="stylesheet" href="/css/journal/calendrier.css">');
     });
 
-    $('#pesterlog').on('wheel', function(e){
-        wheelEvent = e.originalEvent;
-        if(wheelEvent.deltaY <= 0){
-            let mgTop = $('#containerGeneral').css('margin-top')
-            console.log(mgTop);
-            $('#containerGeneral').css('margin-top', (mgTop+10)+'%');
+    $(window).on('wheel', function(e){
+        if($.trim($('#aventure-text').text()) == ''){
+            if(!$('#champ-aventure-edit').css('display') === 'block'){
+                return false;
+            }
         }
-    })
+        e.stopImmediatePropagation();
+        var wheelEvent = e.originalEvent;
+        e.preventDefault();
+        var mgTop = parseInt(document.getElementById('containerGeneral').style.marginTop);
+        if(wheelEvent.deltaY <= 0){
+            // $(".containerGlobal").stop().animate({ "marginTop": ($(window).scrollTop() + 30) + "px"}, "fast");
+            if(mgTop >= 10){
+                $('#containerGeneral').css('margin-top', '10%');
+                return false;
+            }
+            $("#containerGeneral").stop().animate({
+                "margin-top": (mgTop + 7) + '%'
+            }, 120, 'linear');
+        } else{
+            if(mgTop <= -35){
+                return false;
+            }
+            $("#containerGeneral").stop().animate({
+                "margin-top": (mgTop - 7) + '%'
+            }, 120, 'linear');
+        }
+    });
+
+
+
+    $('#saveAdventure').on('click', function(){
+        var content = $('#champ-aventure-edit').val();
+        $.ajax({
+            url: '/writeToFile',
+            method: 'GET',
+            data: {
+                "filepath": 'public/res/story/' + $('#aventure-text').attr('class') + '.txt',
+                "data": content
+            },
+            success: function(response){
+                console.log(response);
+                $('#champ-aventure-edit')
+                    .hide()
+                    .empty();
+            }
+        });
+        $.ajax({
+            url: '/writeToJSON',
+            method: 'GET',
+            data: {
+                "key": $('#aventure-text').attr('class'),
+                "date": $('#aventure-text').attr('class'),
+                "filepath": 'public/res/events.json'
+            },
+            success: function(response){
+                console.log(response);
+            }
+        })
+    });
+
 
 </script>

@@ -4,6 +4,7 @@
 #containerGeneral{
     display: flex;
     align-items: baseline;
+    margin-top: 10%;
 }
 #inventaire{
     position: sticky;
@@ -23,16 +24,6 @@
     font-size: 20px;
     border: none;
     cursor: pointer;
-}
-#calendarButton{
-    color: #744eed;
-    font-size: 20px;
-    background: rgba(255, 249, 242, 0.36);
-}
-#logButton{
-    color: #ed2b00;
-    font-size: 20px;
-    background: rgba(255, 249, 242, 0.36);
 }
 
 

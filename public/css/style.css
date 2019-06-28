@@ -6,8 +6,13 @@ body{
 	background-size: 100%;
 	background-position: 100% 60%;
 	background-attachment: fixed;
+	margin: 0;
 }
 
+
+#header{
+	height: 10%;
+}
 #headerContainer{
 	left: 0;
 	top: 0;
@@ -33,7 +38,7 @@ body{
 
 
 #containerGeneral{
-	margin-top: 10%;
+	margin-top: 5%;
 }
 .containerGlobal{
 	text-align: center;

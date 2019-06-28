@@ -13,7 +13,7 @@
 <body>
 
 
-<div id="containerGeneral" style="margin-top: 10%">
+<div id="containerGeneral" style="margin-top: 5%">
 
     <div class="flexDiv" class="sideMenu" id="inventaire">
         <fieldset>
@@ -82,8 +82,8 @@
         var mgTop = parseInt(document.getElementById('containerGeneral').style.marginTop);
         if(wheelEvent.deltaY <= 0){
             // $(".containerGlobal").stop().animate({ "marginTop": ($(window).scrollTop() + 30) + "px"}, "fast");
-            if(mgTop >= 10){
-                $('#containerGeneral').css('margin-top', '10%');
+            if(mgTop >= 5){
+                $('#containerGeneral').css('margin-top', '5%');
                 return false;
             }
             $("#containerGeneral").stop().animate({

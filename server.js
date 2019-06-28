@@ -5,13 +5,6 @@
 var express = require('express');
 const fs = require('fs');
 
-var jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-const $ = require('jquery');
-
 
 var app = express();
 
@@ -51,7 +44,7 @@ app.get('', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
 
-app.get('/*+[^writeTo][^.][^c][^s][^s]', function (request, response) {
+app.get('/*+[^write][^.css]', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
 app.get('/*.css', function (request, response) {

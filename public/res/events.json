@@ -1,13 +1,1 @@
-{
-  "1": {
-    "titre": 3242,
-    "date": "0",
-    "description": ""
-  },
-  "27-6-2512": {
-    "titre": 3242,
-    "date": "27-6-2512",
-    "filepath": "/res/story/27-6-2512.txt"
-  },
-  "clef": "{titre: 3242, date:28-6-2512,filepath:public/res/events.json},"
-}
+{"27-6-2512":{"titre":3242,"date":"27-6-2512","filepath":"/res/story/27-6-2512.txt"},"28-6-2512":{"titre":"3242","date":"28-6-2512","filepath":"/res/story/28-6-2512.txt"},"29-6-2512":{"titre":"3242","date":"29-6-2512","filepath":"/res/story/29-6-2512.txt"},"21-6-2512":{"titre":"3242","date":"21-6-2512","filepath":"/res/story/21-6-2512.txt"}}

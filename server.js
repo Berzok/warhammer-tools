@@ -5,6 +5,12 @@
 var express = require('express');
 const fs = require('fs');
 
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+const $ = require('jquery');
 
 
 var app = express();
@@ -12,28 +18,19 @@ var app = express();
 
 
 
-function writeToJson(clef, date, filepath){
-    var fileName = filepath;
-    var file = JSON.parse(fs.readFileSync(filepath));
-    console.log(clef);
-    console.log(date);
-    console.log(filepath);
-
-    let data = '{titre: 3242, date:'+date+',filepath:'+filepath+'},';
-
-    file.clef = data;
-
-
-    fs.writeFileSync(fileName, JSON.stringify(file, null, 2), function (err) {
-        if (err) return console.log(err);
-        console.log(JSON.stringify(file));
-        console.log('writing to ' + fileName);
+function writeToJson(key, data){
+    var fileName = 'public/res/events.json';
+    fs.readFile(fileName, function(error, originalContent){
+        var file = JSON.parse(originalContent);
+        file[key] = data;
+        fs.writeFile(fileName, JSON.stringify(file));
     });
+    return 200;
 }
 
 function writeToFile(filepath, data){
     fs.writeFile(filepath, data);
-    console.dir(data);
+    return 200;
 }
 
 
@@ -61,14 +58,13 @@ app.get('/*.css', function (request, response) {
     response.sendFile(__dirname + '/public/css' + request['url']);
 });
 app.get('/*.js', function (request, response) {
-    console.log(request['url']);
     response.sendFile(__dirname + '/public/js' + request['url']);
 });
 app.get('/writeToJSON*', function(request, response){
-    writeToJson(request.query.key, request.query.date, request.query.filepath);
+    response.sendStatus(writeToJson(request.query.key, request.query.data));
 });
 app.get('/writeToFile*', function(request, response){
-    writeToFile(request.query.filepath, request.query.data);
+    response.sendStatus(writeToFile(request.query.filepath, request.query.data));
 });
 
 

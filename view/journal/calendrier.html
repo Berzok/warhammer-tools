@@ -110,25 +110,35 @@
                 "filepath": 'public/res/story/' + $('#aventure-text').attr('class') + '.txt',
                 "data": content
             },
-            success: function(response){
-                console.log(response);
-                $('#champ-aventure-edit')
-                    .hide()
-                    .empty();
+            success: function(){
+                console.log('Adventure log successfully saved');
             }
         });
+        let key = $('#aventure-text').attr('class');
+        let date = $('#aventure-text').attr('class');
+        let filepath = '/res/story/'+date+'.txt';
+        var newEvent = {
+            titre: 3242,
+            date: date,
+            filepath: filepath
+        };
         $.ajax({
             url: '/writeToJSON',
             method: 'GET',
             data: {
-                "key": $('#aventure-text').attr('class'),
-                "date": $('#aventure-text').attr('class'),
-                "filepath": 'public/res/events.json'
+                "key": key,
+                "data": newEvent
             },
-            success: function(response){
-                console.log(response);
+            success: function(){
+                console.log('Event log successfully saved');
+                $('#champ-aventure-edit').hide();
+                $('#aventure-text')
+                    .empty()
+                    .append($('#champ-aventure-edit').val())
+                    .show();
+                $('#champ-aventure-edit').empty();
             }
-        })
+        });
     });
 
 

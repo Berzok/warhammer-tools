@@ -16,13 +16,14 @@ function writeToJson(key, data){
     fs.readFile(fileName, function(error, originalContent){
         var file = JSON.parse(originalContent);
         file[key] = data;
-        fs.writeFile(fileName, JSON.stringify(file));
+        fs.writeFile(fileName, JSON.stringify(file, null, 2), function(){});
     });
     return 200;
 }
 
 function writeToFile(filepath, data){
-    fs.writeFile(filepath, data);
+    console.dir(filepath);
+    fs.writeFile(filepath, data, null, function(){});
     return 200;
 }
 
@@ -43,21 +44,21 @@ app.use(express.static('public/res'));
 app.get('', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
-
+app.get('/writeToJSON', function(request, response){
+    response.sendStatus(writeToJson(request.query.key, request.query.data));
+});
+app.get('/writeToFile', function(request, response){
+    console.dir('aaa');
+    response.sendStatus(writeToFile(request.query.filepath, request.query.data));
+});
 app.get('/*+[^write][^.css]', function (request, response) {
     response.sendFile(__dirname + '/view' + request['url']);
 });
-app.get('/*.css', function (request, response) {
+app.get('/*[css]', function (request, response) {
     response.sendFile(__dirname + '/public/css' + request['url']);
 });
 app.get('/*.js', function (request, response) {
     response.sendFile(__dirname + '/public/js' + request['url']);
-});
-app.get('/writeToJSON*', function(request, response){
-    response.sendStatus(writeToJson(request.query.key, request.query.data));
-});
-app.get('/writeToFile*', function(request, response){
-    response.sendStatus(writeToFile(request.query.filepath, request.query.data));
 });
 
 

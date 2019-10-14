@@ -1,0 +1,94 @@
+
+
+
+#containerGeneral{
+    display: flex;
+    align-items: baseline;
+    margin-top: 10%;
+}
+#inventaire{
+    position: sticky;
+    background-image: url('../../img/old_paper.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 15%;
+    margin: 0 0 0 6%;
+    flex: 0 0 auto;
+    text-align: center;
+    max-height: 100vh;
+    top: 20%;
+}
+.boutonDice{
+    width: 48%;
+    height: 48px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+#informations_page{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+#categorie{
+    flex: 0 0 20%;
+    margin-right: 1%;
+}
+
+body{
+    overflow: hidden;
+}
+.containerGlobal{
+    width: 60%;
+    max-width: 60%;
+}
+
+
+
+.aventure{
+    margin-top: 24px;
+    padding: 4px 4px 4px 4px;
+    background-color: rgba(255, 236, 216, 0.26);
+    line-height: 30px;
+    font-size: 20px;
+    border: 2px solid #3e3303;
+}
+
+
+#calendrier{
+    height: auto;
+    width: 100%;
+}
+
+
+.containerGlobal > fieldset{
+    height: 100%;
+}
+
+.clickableLi, .clickableLi > h2{
+    cursor: pointer;
+    margin-left: 1%;
+}
+.clickableLi > h2:hover{
+    color: rgb(75, 33, 81);
+
+}
+
+#cra-container input{
+    background-color: #744eed;
+}
+
+#datepicker{
+    border: 1px solid darkolivegreen;
+    background-color: rgba(1, 1, 1, 0);
+    color: rgba(1, 1, 1, 0.9);
+    margin: 20px auto 15px auto;
+    -moz-user-select: none;
+}
+#ui-datepicker-div{
+    display: table;
+}

@@ -1,8 +1,18 @@
 
 body{
-  height: 100%;
+	font-family: 'MedievalSharp', cursive;
+	background-image: url('../img/altdorf_city.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 100% 60%;
+	background-attachment: fixed;
+	margin: 0;
 }
 
+
+#header{
+	height: 10%;
+}
 #headerContainer{
 	left: 0;
 	top: 0;
@@ -11,8 +21,7 @@ body{
 	max-width: 100%;
 	border-bottom: 8px solid #01796F;
 	position: fixed;
-	overflow: hidden;
-	background-color: #EEEEEE;
+	background-image: url('../img/old_paper.jpg');
 	text-align: center;
 }
 #header_ul{
@@ -21,38 +30,67 @@ body{
 	justify-content: space-evenly;
 	font-size: 24px;
 }
-
-
-#containerGlobal{
-	text-align: center;
-	margin: 0 auto;
-	width: 60%;
-	padding: 0;
-	margin-top: 5%;
-  margin-bottom: 5%;
+.clickableLi i{
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
-#containerglobal legend{
+
+
+#containerGeneral{
+	margin-top: 5%;
+}
+.containerGlobal{
+	text-align: center;
+	border: 2px solid #511b13;
+	margin: auto auto 5% auto;
+	min-height: 60%;
+	padding: 0;
+	background-image: url('../img/old_paper.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.containerglobal legend{
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
 }
 
 fieldset{
-	background-color:white;
-	border: 1px solid black;
-	border-width:2px;
-  height: auto;
+	border: 3px solid #3e3303;
+	height: 60%;
+	min-height: inherit;
+	margin: 0;
 }
 
 #informations_page{
 	text-align: start;
-	margin-top: -4%;
+	margin-top: 0;
+	/*background-image: url('http://www.blogmais.org/ourimg/big/22/227032_old-paper-wallpaper.jpg');*/
 }
 
-.personnage, .personnage legend, .personnage fieldset, .personnage legend h2{
-  text-align: start;
-  margin-top: 6%;
+
+.flexDiv{
+	margin-top: 6%;
+	border: 2px solid #511b13;
+}
+.flexDiv legend, .flexDiv fieldset, .flexDiv legend h2{
+	flex: 0 1 30%;
+	text-align: center;
+	margin: 0;
+	max-height: 20%;
+}
+.flexDivCentre{
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+}
+
+
+.imageIcon{
+	height: auto;
+	max-height: 40%;
+	object-fit: contain;
 }
 
 
@@ -66,16 +104,10 @@ fieldset{
 
 table, th, td{
 	text-align: center;
-	border: 1px solid black;
 	border-collapse: collapse;
-}
-table{
-	width: 45%;
-	margin-top: 6px;
 }
 th, td{
 	padding: 5px;
-	border: 1px solid black;
 	border-collapse: collapse;
 }
 th{
@@ -89,16 +121,6 @@ th{
 	color: #d1281b;
 }
 
-
-img{
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-img:hover{
-	opacity: 0.7;
-}
 
 /* The Modal (background) */
 .modal {

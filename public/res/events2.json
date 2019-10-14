@@ -1,0 +1,47 @@
+{
+  "cra": {
+    "id": 3242,
+    "validation": "0",
+    "commandes": {
+      "9": {
+        "commande": {
+          "id": 9,
+          "libelle": "CONGES",
+          "codeGin": "CO",
+          "client": {
+            "id": 16,
+            "libelle": "VIVERIS"
+          }
+        },
+        "interventions": {
+          "1": {
+            "duree": "0.50",
+            "commentaire": "HAHA"
+          },
+          "3": {
+            "duree": "2.00",
+            "commentaire": "Pas le temps pas le temps"
+          },
+          "4": {
+            "duree": "2.00",
+            "commentaire": null
+          },
+          "5": {
+            "duree": "1.00",
+            "commentaire": null
+          }
+        }
+      }
+    }
+  },
+  "days": {
+    "1": false,
+    "2": false,
+    "3": true,
+    "4": true,
+    "5": true,
+    "6": true,
+    "7": true,
+    "8": false
+  }
+}

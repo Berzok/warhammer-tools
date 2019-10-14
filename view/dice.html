@@ -1,0 +1,98 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<div id="header">
+</div>
+
+<body>
+
+<div id="containerGeneral">
+
+    <div class="flexDiv" class="sideMenu" id="inventaire">
+        <fieldset>
+            <legend><h1>Inventaire</h1></legend>
+            <div id="inventory">
+                <input type="hidden" id="set" value="0">
+                <div id='inventoryd3' class='inventoryDice'></div>
+                <div id='inventoryd4' class='inventoryDice'></div>
+                <div id='inventoryd6' class='inventoryDice'></div>
+                <div id='inventoryd10' class='inventoryDice'></div>
+                <div id='inventoryd12' class='inventoryDice'></div>
+                <div id='inventoryd20' class='inventoryDice'></div>
+                <div id='inventoryd100' class='inventoryDice'></div>
+            </div>
+            <br />
+            <button id="throw" class="boutonDice"><i class="fas fa-dice"></i></button>
+            <button id="clear" class="boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
+        </fieldset>
+    </div>
+
+    <div class="flexDivCentre containerGlobal containerCharacters">
+        <fieldset>
+            <legend><h1>Générateur de dés</h1></legend>
+            <div id="informations_page">
+                <div class="flexDiv">
+                    <img class="imageIcon diceIcon" id="d3" src="../img/d3.png">
+                    <h2>d3</h2>
+                </div>
+                <div class="flexDiv flexDivCentre">
+                    <img class="imageIcon diceIcon" id="d4" src="../img/d4.png">
+                    <h2>d4</h2>
+                </div>
+                <div class="flexDiv">
+                    <img class="imageIcon diceIcon" id="d6" src="../img/d6.png">
+                    <h2>d6</h2>
+                </div>
+
+                <div class="flexDiv">
+                    <img class="imageIcon diceIcon" id="d10" src="../img/d10.png">
+                    <h2>d10</h2>
+                </div>
+                <div class="flexDiv flexDivCentre">
+                    <img class="imageIcon diceIcon" id="d12" src="../img/d12.png">
+                    <h2>d12</h2>
+                </div>
+                <div class="flexDiv">
+                    <img class="imageIcon diceIcon" id="d20" src="../img/d20.png">
+                    <h2>d20</h2>
+                </div>
+
+                <div class="flexDiv">
+                    <img class="imageIcon diceIcon largeDiceIcon" id="d100" src="../img/d100.png">
+                    <h2>d100</h2>
+                </div>
+            </div>
+            <div id="canvas" class="diceThrow">
+            </div>
+        </fieldset>
+    </div>
+
+</div>
+<br />
+</body>
+</html>
+
+<script>
+    $(function(){
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+        $('head').append('<link rel="stylesheet" href="dice.css">');
+    });
+</script>
+
+<script type="application/x-javascript" src="js/dice.js"></script>
+
+
+<script src="js/tealDice/lib/three.min.js"></script>
+<script src="js/tealDice/lib/cannon.min.js"></script>
+
+<script type="text/javascript" src="js/tealDice/teal.js"></script>
+<script type="text/javascript" src="js/tealDice/dice.js"></script>
+<script type="text/javascript" src="js/tealDice/main.js"></script>
+<script type="text/javascript" defer="defer">
+    $('#set').val('');
+    dice_initialize(document.body);
+</script>

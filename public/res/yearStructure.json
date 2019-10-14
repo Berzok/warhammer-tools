@@ -1,0 +1,139 @@
+{
+  "year": {
+    "monthCount": 12,
+    "daysCount": 400
+  },
+  "month": {
+    "1": {
+      "name": "Nachexen",
+      "surname": "L'après-sabbat",
+      "daysCount": 32,
+      "firstDay": 0
+    },
+    "2": {
+      "name": "Jahrdrung",
+      "surname": "Tournant de l'année",
+      "daysCount": 34,
+      "firstDay": 0
+    },
+    "3": {
+      "name": "Pflugzeit",
+      "surname": "Temps de la charrue",
+      "daysCount": 33,
+      "firstDay": 2
+    },
+    "4": {
+      "name": "Sigmarzeit",
+      "surname": "Flux de Sigmar",
+      "daysCount": 33,
+      "firstDay": 3
+    },
+    "5": {
+      "name": "Sommerzeit",
+      "surname": "Renouveau de l'été",
+      "daysCount": 34,
+      "firstDay": 4
+    },
+    "6": {
+      "name": "Vorgeheim",
+      "surname": "Précédant des mystères",
+      "daysCount": 33,
+      "firstDay": 6
+    },
+    "7": {
+      "name": "Nachgeheim",
+      "surname": "Suivant des mystères",
+      "daysCount": 33,
+      "firstDay": 7
+    },
+    "8": {
+      "name": "Erntezeit",
+      "surname": "Moissons des marées",
+      "daysCount": 34,
+      "firstDay": 0
+    },
+    "9": {
+      "name": "Brauzeit",
+      "surname": "Mois de la bière",
+      "daysCount": 34,
+      "firstDay": 2
+    },
+    "10": {
+      "name": "Kaldezeit",
+      "surname": "Frisson du nord",
+      "daysCount": 33,
+      "firstDay": 4
+    },
+    "11": {
+      "name": "Ulriczeit",
+      "surname": "Ère d'Ulric",
+      "daysCount": 33,
+      "firstDay": 5
+    },
+    "12": {
+      "name": "Vorhexen",
+      "surname": "Précurseur du Sabbat",
+      "daysCount": 34,
+      "firstDay": 6
+    }
+  },
+  "week": {
+    "daysCount": 8
+  },
+  "day": {
+    "0": {
+      "name": "Wellentag",
+      "surname": "Jour du travail",
+      "shortName": "Well",
+      "weekEnd": false
+    },
+    "1": {
+      "name": "Aubentag",
+      "surname": "Jour de l'impôt",
+      "shortName": "Aube",
+      "weekEnd": false
+    },
+    "2": {
+      "name": "Marktag",
+      "surname": "Jour du marché",
+      "shortName": "Mark",
+      "weekEnd": false
+    },
+    "3": {
+      "name": "Backertag",
+      "surname": "Jour du fournil",
+      "shortName": "Back",
+      "weekEnd": false
+    },
+    "4": {
+      "name": "Bezahltag",
+      "surname": "Jour de la taxe",
+      "shortName": "Beza",
+      "weekEnd": false
+    },
+    "6": {
+      "name": "Konistag",
+      "surname": "Jour du Roi",
+      "shortName": "Koni",
+      "weekEnd": false
+    },
+    "7": {
+      "name": "Angestag",
+      "surname": "Début de semaine",
+      "shortName": "Ange",
+      "weekEnd": false
+    },
+    "8": {
+      "name": "Festag",
+      "surname": "Vacances",
+      "shortName": "Fest",
+      "weekEnd": true
+    }
+  },
+  "currentDate": {
+    "year": 2512,
+    "month": 6,
+    "day": 30,
+    "weekDay": 3
+  }
+}

@@ -1,0 +1,47 @@
+
+#container {
+	top:0;
+	left:0;
+	height: 10%;
+	width: 100%;
+	max-width: 100%;
+	border-bottom: 8px solid #01796F;
+	position: fixed;
+	transition: 1s;
+	margin-bottom: 15%;
+	display: flex;
+	flex-flow: row;
+}
+
+
+.dropdown{
+	position: relative;
+	display: block;
+}
+.dropdown-content{
+	display: none;
+	position: absolute;
+	width: inherit;
+}
+.dropdown-content button{
+	display: inline-flex;
+	width: 100%;
+	padding: 3px 0 3px 0;
+	height: 100%;
+}
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+
+
+
+#calendarButton{
+	color: #744eed;
+	font-size: 20px;
+	background: rgba(255, 249, 242, 0.36);
+}
+#logButton{
+	color: #ed2b00;
+	font-size: 20px;
+	background: rgba(255, 249, 242, 0.36);
+}

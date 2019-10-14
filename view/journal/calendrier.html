@@ -1,0 +1,145 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=MedievalSharp&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="application/x-javascript" src="journal.js"></script>
+    <script type="application/x-javascript" src="calendrier.js"></script>
+</head>
+
+<div id="header">
+</div>
+
+<body>
+
+
+<div id="containerGeneral" style="margin-top: 5%">
+
+    <div class="flexDiv" class="sideMenu" id="inventaire">
+        <fieldset>
+            <legend><h1>Détails</h1></legend>
+
+        </fieldset>
+    </div>
+
+
+    <div class="containerGlobal">
+        <input type="hidden" id="defaultMonth" value="6">
+        <input type="hidden" id="defaultYear" value="2512">
+        <fieldset>
+            <legend><h1 id="titreFieldset">Contenu</h1></legend>
+            <div class="row-fluid" style="text-align: center;">
+                <h1>
+                    <small id="changemonth">
+                        <a id="prevmonth" href=""><i class="fas fa-angle-double-left month-change"></i></a>
+                        <span>####</span>
+                        <a id="nextmonth" href=""><i class="fas fa-angle-double-right month-change"></i></a>
+                    </small>
+                </h1>
+            </div>
+            <div id="informations_page">
+                <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
+                <div id="content">
+                    <div id="cra-container">
+                    </div>
+                    <br /><br /><br />
+                    <div id="pesterlog">
+                        <i class="fas fa-pen" id="editAventure" style="margin-bottom: 15px"></i>
+                        <i class="fas fa-save" id="saveAdventure" style="margin-bottom: 15px"></i>
+                        <div id="aventure-text"></div>
+                        <div id="aventure-text-edit">
+                            <textarea rows="50" cols="1" id="champ-aventure-edit"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+<script>
+    $(function(){
+        $("#header").load("/header.html");
+        $("#footer").load("/footer.html");
+        $('head').append('<link rel="stylesheet" href="/css/journal/journal.css">');
+        $('head').append('<link rel="stylesheet" href="/css/journal/calendrier.css">');
+    });
+
+    $(window).on('wheel', function(e){
+        if($.trim($('#aventure-text').text()) == ''){
+            if(!$('#champ-aventure-edit').css('display') === 'block'){
+                return false;
+            }
+        }
+        e.stopImmediatePropagation();
+        var wheelEvent = e.originalEvent;
+        e.preventDefault();
+        var mgTop = parseInt(document.getElementById('containerGeneral').style.marginTop);
+        if(wheelEvent.deltaY <= 0){
+            // $(".containerGlobal").stop().animate({ "marginTop": ($(window).scrollTop() + 30) + "px"}, "fast");
+            if(mgTop >= 5){
+                $('#containerGeneral').css('margin-top', '5%');
+                return false;
+            }
+            $("#containerGeneral").stop().animate({
+                "margin-top": (mgTop + 7) + '%'
+            }, 120, 'linear');
+        } else{
+            if(mgTop <= -35){
+                return false;
+            }
+            $("#containerGeneral").stop().animate({
+                "margin-top": (mgTop - 7) + '%'
+            }, 120, 'linear');
+        }
+    });
+
+
+
+    $('#saveAdventure').on('click', function(){
+        var content = $('#champ-aventure-edit').val();
+        $.ajax({
+            url: '/writeToFile',
+            method: 'GET',
+            data: {
+                "filepath": 'public/res/story/' + $('#aventure-text').attr('class') + '.txt',
+                "data": content
+            },
+            success: function(){
+                console.log('Adventure log successfully saved');
+            }
+        });
+        let key = $('#aventure-text').attr('class');
+        let date = $('#aventure-text').attr('class');
+        let filepath = '/res/story/'+date+'.txt';
+        var newEvent = {
+            titre: 3242,
+            date: date,
+            filepath: filepath
+        };
+        $.ajax({
+            url: '/writeToJSON',
+            method: 'GET',
+            data: {
+                "key": key,
+                "data": newEvent
+            },
+            success: function(){
+                console.log('Event log successfully saved');
+                $('#champ-aventure-edit').hide();
+                $('#aventure-text')
+                    .empty()
+                    .append($('#champ-aventure-edit').val())
+                    .show();
+                $('#champ-aventure-edit').empty();
+            }
+        });
+    });
+
+
+</script>

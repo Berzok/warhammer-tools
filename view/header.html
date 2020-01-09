@@ -2,29 +2,29 @@
   <head>
   <meta charset="UTF-8"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<script src="/common.js"></script>
+	<script src="/js/common.js"></script>
 	<link rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
         crossorigin="anonymous">
-	<link rel="stylesheet" href="/header.css"/>
-  <link rel="stylesheet" href="/style.css"/>
+	<link rel="stylesheet" href="/css/header.css"/>
+  <link rel="stylesheet" href="/css/style.css"/>
   <title>Banque JDR</title>
   </head>
 
 <body>
   <header id="headerContainer">
 	<ul class="fa-ul" id="header_ul">
-		<li><a title="Accueil" href="/index.html"><i class="fas fa-home"></i> Accueil</a></li>
-		<li><a title="Liste des personnages" href="/characters/"><i class="fas fa-users"></i> Personnages</a></li>
-		<li><a title="Résumé des règles" href="/rules.html"><i class="fas fa-hands-helping"></i> Aide de jeu</a></li>
-		<li><a title="Générateur de dés" href="/dice.html"><i class="fas fa-dice-d20"></i> Générateur de dés</a></li>
+		<li><a title="Accueil" href="/view/index.html"><i class="fas fa-home"></i> Accueil</a></li>
+		<li><a title="Liste des personnages" href="/view/characters/"><i class="fas fa-users"></i> Personnages</a></li>
+		<li><a title="Résumé des règles" href="/view/rules.html"><i class="fas fa-hands-helping"></i> Aide de jeu</a></li>
+		<li><a title="Générateur de dés" href="/view/dice.html"><i class="fas fa-dice-d20"></i> Générateur de dés</a></li>
 		<li>
 			<div class="dropdown">
-				<a title="Synopsis" href="/journal/"><i class="fas fa-book"></i> Journal de quête</a>
+				<a title="Synopsis" href="/view/journal/"><i class="fas fa-book"></i> Journal de quête</a>
 				<div class="dropdown-content">
-					<button id="calendarButton" class="clickableLi" onclick="window.location.href = '/journal/calendrier.html'"><i class="fas fa-book-reader"></i> Synopsis</button>
-					<button id="logButton" class="clickableLi" onclick="window.location.href = '/journal/map.html'"><i class="fas fa-map"></i> Carte</button>
+					<button id="calendarButton" class="clickableLi" onclick="window.location.href = '/view/journal/calendrier.html'"><i class="fas fa-book-reader"></i> Synopsis</button>
+					<button id="logButton" class="clickableLi" onclick="window.location.href = '/view/journal/map.html'"><i class="fas fa-map"></i> Carte</button>
 				</div>
 			</div>
 		</li>

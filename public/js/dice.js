@@ -13,7 +13,7 @@ function addDice(id){
         row.append("<table class='tableDiceInventory'>" +
             "<tr>" +
                 "<td>" +
-                    "<img class='imageIcon diceIcon' id='Dice"+id+"' src='../img/"+id+".png' style='width: 100%'>" +
+                    "<img class='imageIcon diceIcon' id='Dice"+id+"' src='/img/"+id+".png' style='width: 100%'>" +
                 "</td>" +
                 "<td>" +
                     "<input type='number' class='diceCount' name='counter_"+id+"' min='0' max='9' value='1' step='1' style='width: 100%; line-height: 28px'>" +

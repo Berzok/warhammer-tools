@@ -10,7 +10,7 @@
 
 #inventaire{
     position: fixed;
-    background-image: url('../img/old_paper.jpg');
+    background-image: url('/img/old_paper.jpg');
     background-repeat: no-repeat;
     background-position: bottom;
     width: 12%;

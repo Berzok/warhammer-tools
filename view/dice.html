@@ -35,33 +35,33 @@
             <legend><h1>Générateur de dés</h1></legend>
             <div id="informations_page">
                 <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d3" src="../img/d3.png">
+                    <img class="imageIcon diceIcon" id="d3" src="/img/d3.png">
                     <h2>d3</h2>
                 </div>
                 <div class="flexDiv flexDivCentre">
-                    <img class="imageIcon diceIcon" id="d4" src="../img/d4.png">
+                    <img class="imageIcon diceIcon" id="d4" src="/img/d4.png">
                     <h2>d4</h2>
                 </div>
                 <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d6" src="../img/d6.png">
+                    <img class="imageIcon diceIcon" id="d6" src="/img/d6.png">
                     <h2>d6</h2>
                 </div>
 
                 <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d10" src="../img/d10.png">
+                    <img class="imageIcon diceIcon" id="d10" src="/img/d10.png">
                     <h2>d10</h2>
                 </div>
                 <div class="flexDiv flexDivCentre">
-                    <img class="imageIcon diceIcon" id="d12" src="../img/d12.png">
+                    <img class="imageIcon diceIcon" id="d12" src="/img/d12.png">
                     <h2>d12</h2>
                 </div>
                 <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d20" src="../img/d20.png">
+                    <img class="imageIcon diceIcon" id="d20" src="/img/d20.png">
                     <h2>d20</h2>
                 </div>
 
                 <div class="flexDiv">
-                    <img class="imageIcon diceIcon largeDiceIcon" id="d100" src="../img/d100.png">
+                    <img class="imageIcon diceIcon largeDiceIcon" id="d100" src="/img/d100.png">
                     <h2>d100</h2>
                 </div>
             </div>
@@ -77,21 +77,21 @@
 
 <script>
     $(function(){
-        $("#header").load("header.html");
-        $("#footer").load("footer.html");
-        $('head').append('<link rel="stylesheet" href="dice.css">');
+        $("#header").load("/view/header.html");
+        $("#footer").load("/view/footer.html");
+        $('head').append('<link rel="stylesheet" href="/css/dice.css">');
     });
 </script>
 
-<script type="application/x-javascript" src="js/dice.js"></script>
+<script type="application/x-javascript" src="/js/dice.js"></script>
 
 
-<script src="js/tealDice/lib/three.min.js"></script>
-<script src="js/tealDice/lib/cannon.min.js"></script>
+<script src="/js/tealDice/lib/three.min.js"></script>
+<script src="/js/tealDice/lib/cannon.min.js"></script>
 
-<script type="text/javascript" src="js/tealDice/teal.js"></script>
-<script type="text/javascript" src="js/tealDice/dice.js"></script>
-<script type="text/javascript" src="js/tealDice/main.js"></script>
+<script type="text/javascript" src="/js/tealDice/teal.js"></script>
+<script type="text/javascript" src="/js/tealDice/dice.js"></script>
+<script type="text/javascript" src="/js/tealDice/main.js"></script>
 <script type="text/javascript" defer="defer">
     $('#set').val('');
     dice_initialize(document.body);

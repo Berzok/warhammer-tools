@@ -58,7 +58,7 @@ function createMap(){
 
 $(document).ready(function(){
     $('#calendarButton').on('click', function(){
-        window.location.replace('calendrier.html');
+        window.location.replace('/view/calendrier.html');
     });
 });
 

@@ -515,7 +515,7 @@
 
         const loader = new THREE.TextureLoader();
         this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1),
-            new THREE.MeshPhongMaterial({ map: loader.load('img/old_wood.jpg')}));
+            new THREE.MeshPhongMaterial({ map: loader.load('/img/old_wood.jpg')}));
 
 
         this.desk.receiveShadow = that.use_shadows;

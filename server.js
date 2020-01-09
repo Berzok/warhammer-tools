@@ -35,15 +35,15 @@ function writeToFile(filepath, data){
 
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
-app.use(express.static('public/js'));
-app.use(express.static('public/res'));
+app.use('/css', express.static('public/css'));
+app.use('/img', express.static('public/img'));
+app.use('/js', express.static('public/js'));
+app.use('/res', express.static('public/res'));
+app.use('/view', express.static('view'));
 
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('', function (request, response) {
-    response.sendFile(__dirname + '/view' + request['url']);
-});
+
 app.get('/writeToJSON', function(request, response){
     response.sendStatus(writeToJson(request.query.key, request.query.data));
 });
@@ -51,20 +51,16 @@ app.get('/writeToFile', function(request, response){
     console.dir('aaa');
     response.sendStatus(writeToFile(request.query.filepath, request.query.data));
 });
-app.get('/*+[^write][^.css]', function (request, response) {
-    response.sendFile(__dirname + '/view' + request['url']);
-});
-app.get('/*[css]', function (request, response) {
-    response.sendFile(__dirname + '/public/css' + request['url']);
-});
-app.get('/*.js', function (request, response) {
-    response.sendFile(__dirname + '/public/js' + request['url']);
-});
+
 
 
 // listen for requests :)
 var listener = app.listen(3000, function () {
     console.log('Your app is listening on port ' + listener.address().port);
+});
+
+app.get("/", function (request, response) {
+  response.sendFile(__dirname + '/view/index.html');
 });
 
 

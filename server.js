@@ -5,11 +5,33 @@
 var express = require('express');
 const fs = require('fs');
 
-
 var app = express();
 
 
 
+
+
+
+ 
+
+  /*
+  fs.readdir('public/css/', (err, files) => {
+    files.forEach(file => {
+      if(file == 'build')
+    });
+  });
+  */
+
+
+// listen for requests :)
+var listener = app.listen(3000, function () {
+    console.log('Your app is listening on port ' + listener.address().port);
+});
+
+
+app.get("/", function (request, response) {
+  response.sendFile(__dirname + '/view/index.html');
+});
 
 function writeToJson(key, data){
     var fileName = 'public/res/events.json';
@@ -33,13 +55,14 @@ function writeToFile(filepath, data){
 
 
 
-
 // http://expressjs.com/en/starter/static-files.html
 app.use('/css', express.static('public/css'));
 app.use('/img', express.static('public/img'));
 app.use('/js', express.static('public/js'));
+app.use('/python', express.static('scripts/python'));
 app.use('/res', express.static('public/res'));
 app.use('/view', express.static('view'));
+
 
 
 // http://expressjs.com/en/starter/basic-routing.html
@@ -50,17 +73,6 @@ app.get('/writeToJSON', function(request, response){
 app.get('/writeToFile', function(request, response){
     console.dir('aaa');
     response.sendStatus(writeToFile(request.query.filepath, request.query.data));
-});
-
-
-
-// listen for requests :)
-var listener = app.listen(3000, function () {
-    console.log('Your app is listening on port ' + listener.address().port);
-});
-
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/view/index.html');
 });
 
 
@@ -84,5 +96,3 @@ var WebHelper = new function () {
         }
     };
 };
-
-

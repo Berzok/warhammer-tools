@@ -4,7 +4,7 @@
   "description": "Example app showing use of NeDB",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js | gulp"
   },
   "dependencies": {
     "browserify": "^16.2.3",
@@ -17,7 +17,10 @@
     "pdfobject": "^2.1.1",
     "three": "^0.105.2",
     "threejs-dice": "^1.1.0",
-    "uniq": "^1.0.1"
+    "uniq": "^1.0.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1"
   },
   "keywords": [
     "node",

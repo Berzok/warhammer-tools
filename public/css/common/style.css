@@ -1,7 +1,7 @@
 
 body{
 	font-family: 'MedievalSharp', cursive;
-	background-image: url('/img/altdorf_city.jpg');
+	background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Faltdorf_city.jpg?v=1578657492687');
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: 100% 60%;
@@ -21,7 +21,7 @@ body{
 	max-width: 100%;
 	border-bottom: 8px solid #01796F;
 	position: fixed;
-	background-image: url('/img/old_paper.jpg');
+	background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fold_paper.jpg?v=1578657149250');
 	text-align: center;
 }
 #header_ul{
@@ -46,7 +46,7 @@ body{
 	margin: auto auto 5% auto;
 	min-height: 60%;
 	padding: 0;
-	background-image: url('/img/old_paper.jpg');
+	background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fold_paper.jpg?v=1578657149250');
 	background-repeat: no-repeat;
 	background-size: cover;
 }

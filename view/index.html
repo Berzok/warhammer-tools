@@ -1,10 +1,18 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8"/>
+  <title>Banque JDR</title>
+  <link rel="stylesheet" href="/css/build/common.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/css/index.css" media="print" onload="this.media='all'">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <div id="header">
+  <script>
+    $(function(){
+      $("#header").load("/view/header.html");
+    });
+  </script>
 </div>
 
 <body>
@@ -17,10 +25,10 @@
 			<div id="informations_page">
 				<div id="categorie">
 					<ul>
-						<li><a href="/characters/"><h2>Récapitulatif des personnages</h2></a></li>
-						<li><a href="rules.html"><h2>Aide-mémoire des règles du jeu à connaître</h2></a></li>
-						<li><a href="dice.html"><h2>Générateur de dés</h2></a></li>
-						<li><a href="/journal/"><h2>Journal de quête</h2></a></li>
+						<li><a href="/view/characters/"><h2>Récapitulatif des personnages</h2></a></li>
+						<li><a href="/view/rules.html"><h2>Aide-mémoire des règles du jeu à connaître</h2></a></li>
+						<li><a href="/view/dice.html"><h2>Générateur de dés</h2></a></li>
+						<li><a href="/view/journal/"><h2>Journal de quête</h2></a></li>
 						<li><a href="gallerie.html"><h2>Gallerie photo</h2></a></li>
 					</ul>
 				</div>
@@ -33,11 +41,3 @@
 
 </body>
 </html>
-
-<script>
-$(function(){
-	$("#header").load("/view/header.html");
-	$("#footer").load("/view/footer.html");
-	$('head').append('<link rel="stylesheet" href="/css/index.css">');
-});
-</script>

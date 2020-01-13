@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script type="application/x-javascript" src="/js/characters.js"></script>
+    <link rel="stylesheet" href="/css/build/common.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="/css/characters.css" media="print" onload="this.media='all'">
 </head>
 
 <div id="header">
@@ -19,15 +20,15 @@
             <legend><h1>Liste des personnages</h1></legend>
             <div id="informations_page">
                 <div class="personnage">
-                    <img class="characterIcon" id="erratum" src="/img/ulgu.png">
+                    <img class="characterIcon" id="erratum" src="https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fulgu.png?v=1578657569386.png">
                     <h2>Erratum</h2>
                 </div>
                 <div class="personnage personnageDuCentre">
-                    <img class="characterIcon" id="kurt" src="/img/twin_tailed_comet2.png">
+                    <img async class="characterIcon" id="kurt" src="https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Ftwin_tailed_comet.png?v=1578657744831">
                     <h2>Kurt</h2>
                 </div>
                 <div class="personnage">
-                    <img class="characterIcon" id="johanna" src="/img/weapon.png">
+                    <img class="characterIcon" id="johanna" src="https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fhalberd.png?v=1578657868441">
                     <h2>Johanna</h2>
                 </div>
                 <div class="personnage">
@@ -40,14 +41,14 @@
 
 </div>
 <br/>
+<script async type="application/x-javascript" src="/js/characters.js"></script>
 </body>
 </html>
 
 <script>
-    $(function () {
+    $(async function () {
         $("#header").load("/view/header.html");
         $("#footer").load("/view/footer.html");
-        $('head').append('<link rel="stylesheet" href="/css/characters.css">');
     });
 
     $('div.personnage').each(function(index){

@@ -1,85 +1,102 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/build/common.min.css" media="print" onload="this.media='all'">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/dice.css">
 </head>
 
-<div id="header">
+<div id="header" class="sticky-top">
 </div>
 
 <body>
 
-<div id="containerGeneral">
+<div class="container-fluid">
+    <div class="row">
 
-    <div class="flexDiv" class="sideMenu" id="inventaire">
-        <fieldset>
-            <legend><h1>Inventaire</h1></legend>
-            <div id="inventory">
-                <input type="hidden" id="set" value="0">
-                <div id='inventoryd3' class='inventoryDice'></div>
-                <div id='inventoryd4' class='inventoryDice'></div>
-                <div id='inventoryd6' class='inventoryDice'></div>
-                <div id='inventoryd10' class='inventoryDice'></div>
-                <div id='inventoryd12' class='inventoryDice'></div>
-                <div id='inventoryd20' class='inventoryDice'></div>
-                <div id='inventoryd100' class='inventoryDice'></div>
-            </div>
-            <br />
-            <button id="throw" class="boutonDice"><i class="fas fa-dice"></i></button>
-            <button id="clear" class="boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
-        </fieldset>
-    </div>
+        <div class="col m-lg-5">
+            <fieldset class="old-paper-bg">
+                <p>
+                <h1>Inventaire</h1></p>
+                <div id="inventory">
+                    <input type="hidden" id="set" value="0">
+                    <div id='inventoryd3' class='inventoryDice'></div>
+                    <div id='inventoryd4' class='inventoryDice'></div>
+                    <div id='inventoryd6' class='inventoryDice'></div>
+                    <div id='inventoryd10' class='inventoryDice'></div>
+                    <div id='inventoryd12' class='inventoryDice'></div>
+                    <div id='inventoryd20' class='inventoryDice'></div>
+                    <div id='inventoryd100' class='inventoryDice'></div>
+                </div>
+                <br/>
+                <button id="throw" class="boutonDice"><i class="fas fa-dice"></i></button>
+                <button id="clear" class="boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
+            </fieldset>
+        </div>
 
-    <div class="flexDivCentre containerGlobal containerCharacters">
-        <fieldset>
-            <legend><h1>Générateur de dés</h1></legend>
-            <div id="informations_page">
-                <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d3" src="/img/d3.png">
-                    <h2>d3</h2>
-                </div>
-                <div class="flexDiv flexDivCentre">
-                    <img class="imageIcon diceIcon" id="d4" src="/img/d4.png">
-                    <h2>d4</h2>
-                </div>
-                <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d6" src="/img/d6.png">
-                    <h2>d6</h2>
-                </div>
-
-                <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d10" src="/img/d10.png">
-                    <h2>d10</h2>
-                </div>
-                <div class="flexDiv flexDivCentre">
-                    <img class="imageIcon diceIcon" id="d12" src="/img/d12.png">
-                    <h2>d12</h2>
-                </div>
-                <div class="flexDiv">
-                    <img class="imageIcon diceIcon" id="d20" src="/img/d20.png">
-                    <h2>d20</h2>
+        <div class="col-9 py-lg-5 pr-lg-5">
+            <fieldset class="container old-paper-bg">
+                <p>
+                <h1>Générateur de dés</h1></p>
+                <div class="row align-items-start">
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d3" src="/img/d3.png">
+                        <h2></h2>
+                    </div>
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d4" src="/img/d4.png">
+                        <h2></h2>
+                    </div>
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d6" src="/img/d6.png">
+                        <h2></h2>
+                    </div>
                 </div>
 
-                <div class="flexDiv">
-                    <img class="imageIcon diceIcon largeDiceIcon" id="d100" src="/img/d100.png">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d10" src="/img/d10.png">
+                        <h2></h2>
+                    </div>
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d12" src="/img/d12.png">
+                        <h2></h2>
+                    </div>
+                    <div class="col">
+                        <img class="img-fluid w-25" id="d20" src="/img/d10.png">
+                        <h2></h2>
+                    </div>
+                </div>
+
+                <div class="col align-self-end mt-4">
+                    <img class="img-fluid w-25" id="d100" src="/img/d100.png">
                     <h2>d100</h2>
                 </div>
-            </div>
-            <div id="canvas" class="diceThrow">
-            </div>
-        </fieldset>
-    </div>
 
-</div>
-<br />
+                <div id="canvas" class="diceThrow">
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+    <br/>
 </body>
 </html>
 
 <script>
-    $(function(){
+    $(function () {
         $("#header").load("/view/header.html");
         $("#footer").load("/view/footer.html");
-        $('head').append('<link rel="stylesheet" href="/css/dice.css">');
+        //$('head').append('<link rel="stylesheet" href="/css/dice.css">');
     });
 </script>
 

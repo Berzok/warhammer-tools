@@ -10,26 +10,6 @@ body{
 }
 
 
-#header{
-	height: 10%;
-}
-#headerContainer{
-	left: 0;
-	top: 0;
-	height: 10%;
-	width: 100%;
-	max-width: 100%;
-	border-bottom: 8px solid #01796F;
-	position: fixed;
-	background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fold_paper.jpg?v=1578657149250');
-	text-align: center;
-}
-#header_ul{
-	display: flex;
-	flex-flow: row;
-	justify-content: space-evenly;
-	font-size: 24px;
-}
 .clickableLi i{
 	margin-right: 5px;
 	margin-left: 5px;
@@ -51,19 +31,6 @@ body{
 	background-size: cover;
 }
 
-.containerglobal legend{
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0;
-}
-
-fieldset{
-	border: 3px solid #3e3303;
-	height: 60%;
-	min-height: inherit;
-	margin: 0;
-}
-
 #informations_page{
 	text-align: start;
 	margin-top: 0;
@@ -71,19 +38,19 @@ fieldset{
 }
 
 
-.flexDiv{
-	margin-top: 6%;
-	border: 2px solid #511b13;
-}
-.flexDiv legend, .flexDiv fieldset, .flexDiv legend h2{
-	flex: 0 1 30%;
+.old-paper-bg{
+	background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fold_paper.jpg?v=1578657149250');
+	background-repeat: no-repeat;
 	text-align: center;
-	margin: 0;
-	max-height: 20%;
 }
-.flexDivCentre{
-	border-left: 2px solid gray;
-	border-right: 2px solid gray;
+.brown-border-full{
+	border: 3px solid #3e3303;
+}
+.font-30{
+	font-size: 30px;
+}
+.font-dark-blue{
+	color: #2440ae;
 }
 
 
@@ -114,11 +81,10 @@ th{
 	font-weight: bold;
 	font-size: 24px;
 }
-#pros{
-	color: #0d8324;
-}
-#cons{
-	color: #d1281b;
+
+
+.w-20{
+	width: 20% !important;
 }
 
 

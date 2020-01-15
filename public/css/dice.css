@@ -1,13 +1,6 @@
 
 
 
-.old-paper-bg{
-    background-image: url('https://cdn.glitch.com/a2586b49-c254-4297-a01c-27e49c1d5376%2Fold_paper.jpg?v=1578657149250');
-    background-repeat: no-repeat;
-    text-align: center;
-}
-
-
 #throw{
     color: cornflowerblue;
     font-size: 28px;
@@ -20,6 +13,4 @@
 }
 
 
-fieldset{
-    border: 3px solid #3e3303;
-}
+

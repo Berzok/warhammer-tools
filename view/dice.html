@@ -23,64 +23,72 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col m-lg-5">
-            <fieldset class="old-paper-bg">
-                <p>
-                <h1>Inventaire</h1></p>
-                <div id="inventory">
-                    <input type="hidden" id="set" value="0">
-                    <div id='inventoryd3' class='inventoryDice'></div>
-                    <div id='inventoryd4' class='inventoryDice'></div>
-                    <div id='inventoryd6' class='inventoryDice'></div>
-                    <div id='inventoryd10' class='inventoryDice'></div>
-                    <div id='inventoryd12' class='inventoryDice'></div>
-                    <div id='inventoryd20' class='inventoryDice'></div>
-                    <div id='inventoryd100' class='inventoryDice'></div>
+        <div class="col mx-5">
+            <fieldset class="old-paper-bg brown-border-full">
+                <div class="container-fluid" id="inventory">
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d3" src="/img/d3.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d4" src="/img/d4.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d6" src="/img/d6.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d10" src="/img/d10.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d12" src="/img/d12.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-20" id="d20" src="/img/d20.png">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my-3">
+                            <img class="img-fluid w-50" id="d100" src="/img/d100.png">
+                        </div>
+                    </div>
+
                 </div>
+
+                <input type="hidden" id="set" value="0">
+                <input type="hidden" id="clear" value="0">
+                <div id='inventoryd3' class='inventoryDice'></div>
+                <div id='inventoryd4' class='inventoryDice'></div>
+                <div id='inventoryd6' class='inventoryDice'></div>
+                <div id='inventoryd10' class='inventoryDice'></div>
+                <div id='inventoryd12' class='inventoryDice'></div>
+                <div id='inventoryd20' class='inventoryDice'></div>
+                <div id='inventoryd100' class='inventoryDice'></div>
                 <br/>
-                <button id="throw" class="boutonDice"><i class="fas fa-dice"></i></button>
-                <button id="clear" class="boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
+
             </fieldset>
         </div>
 
-        <div class="col-9 py-lg-5 pr-lg-5">
-            <fieldset class="container old-paper-bg">
+        <div class="col-9 pr-lg-5">
+            <fieldset class="container old-paper-bg brown-border-full">
                 <p>
                 <h1>Générateur de dés</h1></p>
-                <div class="row align-items-start">
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d3" src="/img/d3.png">
-                        <h2></h2>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d4" src="/img/d4.png">
-                        <h2></h2>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d6" src="/img/d6.png">
-                        <h2></h2>
-                    </div>
-                </div>
-
-                <div class="row align-items-center">
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d10" src="/img/d10.png">
-                        <h2></h2>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d12" src="/img/d12.png">
-                        <h2></h2>
-                    </div>
-                    <div class="col">
-                        <img class="img-fluid w-25" id="d20" src="/img/d10.png">
-                        <h2></h2>
-                    </div>
-                </div>
-
-                <div class="col align-self-end mt-4">
-                    <img class="img-fluid w-25" id="d100" src="/img/d100.png">
-                    <h2>d100</h2>
-                </div>
 
                 <div id="canvas" class="diceThrow">
                 </div>
@@ -89,6 +97,7 @@
         </div>
     </div>
     <br/>
+</div>
 </body>
 </html>
 

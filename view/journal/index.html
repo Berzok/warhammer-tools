@@ -12,7 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-    <script type="application/x-javascript" src="/js/journal.js"></script>
+    <script defer src="/js/journal/journal.js"></script>
 </head>
 
 <div id="header">
@@ -21,84 +21,87 @@
 <body>
 
 
+<div class="container-fluid">
+    <div class="row">
 
-<div id="containerGeneral">
+        <div class="col mx-5">
+            <fieldset class="old-paper-bg brown-border-full mx-auto h-25 w-50">
+                <h1>Index</h1>
+                <button id="calendarButton" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br/>
+                    Synopsis
+                </button>
+                <button id="logButton" class="boutonDice clickableLi"><i class="fas fa-map"></i><br/>Carte</button>
+            </fieldset>
+        </div>
 
-    <div class="flexDiv" class="sideMenu" id="inventaire">
-        <fieldset>
-            <legend><h1>Catégories</h1></legend>
-            <button id="calendarButton" class="boutonDice clickableLi"><i class="fas fa-book-reader"></i><br /> Synopsis</button>
-            <button id="logButton" class="boutonDice clickableLi"><i class="fas fa-map"></i><br />Carte</button>
-        </fieldset>
-    </div>
 
-
-    <div class="containerGlobal">
-        <fieldset>
-            <legend><h1 id="titreFieldset">Contenu</h1></legend>
-            <div id="informations_page">
-    <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
-                <div id="content">
-                    aaa
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+        <div class="col-8 mx-5">
+            <fieldset class="old-paper-bg brown-border-full h-50 mb-5 pb-5">
+                <h1>Contenu</h1>
+                <div id="">
+                    <!--            <h2 class="clickableLi" onclick="smoothTransition('calendrier')"><i class="far fa-calendar-alt"></i> Calendrier</h2>-->
+                    <div id="content">
+                        aaa
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
                 </div>
-            </div>
-        </fieldset>
-    </div>
+            </fieldset>
+        </div>
 
+    </div>
 </div>
 
 </body>
 </html>
 
 <script>
-    $(function(){
+    $(function () {
         $("#header").load("/view/header.html");
         $("#footer").load("/view/footer.html");
         $('head').append('<link rel="stylesheet" href="/css/journal/journal.css">');

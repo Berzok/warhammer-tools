@@ -463,8 +463,12 @@
         // this.ch = container.clientHeight / 2;
 
 
-        this.cw = $('#informations_page').width() / 2;
-        this.ch = container.clientHeight * 2;
+        //this.cw = 400;
+        //this.ch = container.clientHeight * 2;
+        console.log("Width of canvas = " + $('#canvas').width());
+        console.log("Height of canvas = " + $('#canvas').height());
+        this.cw = $('#canvas').width();
+        this.ch = $('#canvas').height();
 
 
         if (dimentions) {
@@ -476,6 +480,8 @@
             this.h = this.ch;
         }
 
+        this.w = this.cw;
+        this.h = this.ch;
 
         //C'est le zoom apparemment
         this.aspect = Math.min(this.cw / this.w, this.ch / this.h) ;
@@ -689,7 +695,7 @@
         this.renderer.render(this.scene, this.camera);
         var box = this;
         setTimeout(function() { box.renderer.render(box.scene, box.camera); }, 100);
-    }
+    };
 
     this.dice_box.prototype.prepare_dices_for_roll = function(vectors) {
         this.clear();
@@ -698,7 +704,7 @@
             this.create_dice(vectors[i].set, vectors[i].pos, vectors[i].velocity,
                     vectors[i].angle, vectors[i].axis);
         }
-    }
+    };
 
     function shift_dice_faces(dice, value, res) {
         var r = that.dice_face_range[dice.dice_type];
@@ -735,7 +741,7 @@
         this.running = (new Date()).getTime();
         this.last_time = 0;
         this.__animate(this.running);
-    }
+    };
 
     this.dice_box.prototype.__selector_animate = function(threadid) {
         var time = (new Date()).getTime();
@@ -755,7 +761,7 @@
                 requestAnimationFrame(function() { t.__selector_animate(tid); });
             })(this, threadid);
         }
-    }
+    };
 
     this.dice_box.prototype.search_dice_by_mouse = function(ev) {
         var m = $t.get_mouse_coords(ev);
@@ -764,7 +770,7 @@
                                        1 - (m.y - this.ch) / this.aspect, this.w / 9))
                     .sub(this.camera.position).normalize())).intersectObjects(this.dices);
         if (intersects.length) return intersects[0].object.userData;
-    }
+    };
 
     this.dice_box.prototype.draw_selector = function() {
         this.clear();
@@ -788,9 +794,13 @@
 
         this.running = (new Date()).getTime();
         this.last_time = 0;
-        if (this.animate_selector) this.__selector_animate(this.running);
-        else this.renderer.render(this.scene, this.camera);
-    }
+        if (this.animate_selector){
+            this.__selector_animate(this.running);
+        }
+        else {
+            this.renderer.render(this.scene, this.camera);
+        }
+    };
 
     function throw_dices(box, vector, boost, dist, notation_getter, before_roll, after_roll) {
         var uat = $t.dice.use_adapvite_timestep;
@@ -838,7 +848,7 @@
                 throw_dices(box, vector, boost, dist, notation_getter, before_roll, after_roll);
             });
         });
-    }
+    };
 
     this.dice_box.prototype.bind_throw = function(button, notation_getter, before_roll, after_roll) {
         var box = this;
@@ -846,7 +856,7 @@
             ev.stopPropagation();
             box.start_throw(notation_getter, before_roll, after_roll);
         });
-    }
+    };
 
     this.dice_box.prototype.start_throw = function(notation_getter, before_roll, after_roll) {
         var box = this;

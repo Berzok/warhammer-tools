@@ -54,8 +54,12 @@ function dice_initialize(container) {
     var box = new $t.dice.dice_box(canvas);
     box.animate_selector = false;
 
+    $t.bind(window, 'ready', function(){
+        box.reinit(canvas, { w: 830, h: 417 });
+    });
     $t.bind(window, 'resize', function() {
-        canvas.style.width = window.innerWidth - 1 + 'px';
+        //canvas.style.width = window.innerWidth - 1 + 'px';
+        canvas.style.width = 500 + 'px';
         canvas.style.height = window.innerHeight - 1 + 'px';
         box.reinit(canvas, { w: 830, h: 417 });
     });
@@ -101,7 +105,6 @@ function dice_initialize(container) {
     $t.bind(container, ['mouseup', 'touchend'], function(ev) {
         ev.stopPropagation();
             box.rolling = false;
-
         var name = box.search_dice_by_mouse(ev);
         if (name != undefined) {
             var notation = $t.dice.parse_notation(set.value);
@@ -122,7 +125,7 @@ function dice_initialize(container) {
                 on_set_change();
             }
         });
-    })
+    });
 
     if (params.notation) {
         set.value = params.notation;

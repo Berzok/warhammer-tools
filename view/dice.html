@@ -94,7 +94,7 @@
                 </div>
 
                 <input type="hidden" id="set" value="0">
-                <input type="hidden" id="clear" value="0">
+                <input type="hidden" value="0">
                 <div id='inventoryd3' class='inventoryDice'></div>
                 <div id='inventoryd4' class='inventoryDice'></div>
                 <div id='inventoryd6' class='inventoryDice'></div>
@@ -105,6 +105,14 @@
                 <br/>
 
             </fieldset>
+
+            <div class="container-fluid mx-auto">
+                <div class="row">
+                    <button id="throw" class="col h-25 w-25 boutonDice"><i class="fas fa-dice"></i></button>
+                    <button id="clear" class="col h-25 w-25 boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-9 pr-lg-5">
@@ -112,13 +120,13 @@
                 <div class="row">
                     <div class="col">
                         <p>
-                        <h1 id="throw">Générateur de dés</h1></p>
+                        <h1>Générateur de dés</h1></p>
                     </div>
                 </div>
 
                 <div class="row flex-fill">
 
-                    <div id="canvas" class="diceThrow h-auto w-100">
+                    <div id="canvas" class="diceThrow h-auto w-100 flex-fill">
                     </div>
 
                 </div>

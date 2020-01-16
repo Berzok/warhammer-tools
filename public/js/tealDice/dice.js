@@ -528,7 +528,7 @@
         this.scene.add(this.desk);
 
         this.renderer.render(this.scene, this.camera);
-    }
+    };
 
     function make_random_vector(vector) {
         var random_angle = rnd() * Math.PI / 5 - Math.PI / 5 / 2;

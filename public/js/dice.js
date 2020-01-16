@@ -32,8 +32,9 @@ $('.row.align-items-center').each(function () {
 
 
 function clearInventory() {
-    $('.tableDiceInventory').each(function () {
-        this.remove();
+    $.each(diceInBag, function(k, v){
+        $('#inventory'+k).val(0);
+        $('#'+k).parent().siblings()[0].children[0].innerText = 0;
     });
     $('#set').val('');
     diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};

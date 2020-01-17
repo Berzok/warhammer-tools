@@ -1,50 +1,74 @@
 <html lang="fr">
 <head>
-	<meta charset="UTF-8"/>
-  <title>Banque JDR</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-		  crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/build/common.min.css" media="print" onload="this.media='all'">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-			crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-			crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/index.css" media="print" onload="this.media='all'">
+    <meta charset="UTF-8"/>
+    <title>Banque JDR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/common/header.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="/css/common/style.css" media="print" onload="this.media='all'">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/index.css" media="print" onload="this.media='all'">
 </head>
 
 <div id="header">
-  <script>
-    $(function(){
-      $("#header").load("/view/header.html");
-    });
-  </script>
+    <script>
+        $(function () {
+            $("#header").load("/view/header.html");
+        });
+    </script>
 </div>
 
 <body>
 
-<div id="containerGeneral">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
 
-	<div class="containerGlobal">
-		<fieldset style="height: auto">
-			<legend><h1>Plan du site</h1></legend>
-			<div id="informations_page">
-				<div id="categorie">
-					<ul>
-						<li><a href="/view/characters/"><h2>Récapitulatif des personnages</h2></a></li>
-						<li><a href="/view/rules.html"><h2>Aide-mémoire des règles du jeu à connaître</h2></a></li>
-						<li><a href="/view/dice.html"><h2>Générateur de dés</h2></a></li>
-						<li><a href="/view/journal/"><h2>Journal de quête</h2></a></li>
-						<li><a href="gallerie.html"><h2>Gallerie photo</h2></a></li>
-					</ul>
-				</div>
-			</div>
-		</fieldset>
-	</div>
+            <fieldset class="container-fluid w-50 mx-auto old-paper-bg brown-border-full">
+                <div class="row">
+                    <div class="col">
+                        <h1>Plan du site</h1>
+                    </div>
+                </div>
 
+                <div class="container-fluid d-flex">
+
+                    <div class="row">
+                        <li class="col">
+                            <a href="/view/characters/"><h2>Récapitulatif des personnages</h2></a>
+                        </li>
+                    </div>
+
+                    <div class="row">
+                        <li class="col">
+                            <a href="/view/rules.html"><h2>Aide-mémoire des règles du jeu à connaître</h2></a>
+                        </li>
+                    </div>
+
+                    <div class="row">
+                        <li class="col">
+                            <a href="/view/dice.html"><h2>Générateur de dés</h2></a>
+                        </li>
+                    </div>
+
+                    <div class="row">
+                        <li class="col">
+                            <a href="/view/journal/"><h2>Journal de quête</h2></a>
+                        </li>
+                    </div>
+
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
 </div>
 
 

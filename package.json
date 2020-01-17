@@ -4,7 +4,7 @@
   "description": "Example app showing use of NeDB",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js | gulp"
+    "start": "node server.js"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",

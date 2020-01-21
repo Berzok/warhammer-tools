@@ -21,7 +21,7 @@
 
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid hmax-100">
     <div class="row">
 
         <div class="col mx-5 w-50">
@@ -110,8 +110,10 @@
 
             <div class="container-fluid mx-auto">
                 <div class="row">
-                    <button id="clear" class="col h-25 w-25 boutonDice" onclick="clearInventory()"><i class="fas fa-times"></i></button>
-                    <button id="throw" class="col h-25 w-25 boutonDice" onclick="()"><i class="fas fa-times"></i></button>
+                    <button id="clear" class="col h-25 w-25 boutonDice" onclick="clearInventory()"><i
+                            class="fas fa-times"></i></button>
+                    <button id="throw" class="col h-25 w-25 boutonDice" onclick="()"><i class="fas fa-times"></i>
+                    </button>
                 </div>
             </div>
 
@@ -119,11 +121,11 @@
         </div>
 
         <div class="col-9 pr-lg-5">
-            <fieldset class="container-fluid d-flex flex-column old-paper-bg brown-border-full h-100">
+            <fieldset class="container d-flex flex-column old-paper-bg brown-border-full h-100">
 
-                <div class="row flex-fill">
+                <div class="row flex-grow-1 hmax-100 h-100">
 
-                    <div id="canvas" class="diceThrow h-auto w-100 flex-fill">
+                    <div id="canvas" class="diceThrow h-auto w-100">
                     </div>
 
                 </div>

@@ -212,10 +212,10 @@
     };
 
     this.create_d2_geometry = function(radius) {
-        var vertices = [[-1, -1, -0.04], [1, -1, -0.04], [1, 1, -0.04], [-1, 1, -0.04],
-            [-1, -1, 0.04], [1, -1, 0.04], [1, 1, 0.04], [-1, 1, 0.04]];
-        var faces = [[0, 3, 2, 1, 1], [6, 7, 4, 5, 2]];
-        return create_geom(vertices, faces, radius, 0.1, Math.PI / 4, 0.96);
+        var vertices = [[-1, -1, -0.2], [1, -1, -0.2], [1, 1, -0.2], [-1, 1, -0.2],
+            [-1, -1, 0.2], [1, -1, 0.2], [1, 1, 0.2], [-1, 1, 0.2]];
+        var faces = [[0, 3, 2, 1, 1], [4, 5, 6, 7, 2], [0, 4, 7, 3, 0], [1, 2, 6, 5, 0], [0, 1, 5, 4, 0], [3, 7, 6, 2, 0]];
+        return create_geom(vertices, faces, radius, 0.1, Math.PI / 4, 0.945);
     };
 
     this.create_d4_geometry = function(radius) {
@@ -291,10 +291,10 @@
     this.use_shadows = true;
 
     this.known_types = ['d2', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
-    this.dice_face_range = { 'd2': [1,6], 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9],
+    this.dice_face_range = { 'd2': [1,2], 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9],
         'd12': [1, 12], 'd20': [1, 20], 'd100': [0, 9] };
-    this.dice_mass = { 'd2': 700, 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
-    this.dice_inertia = { 'd2': 20, 'd4': 5, 'd6': 13, 'd8': 10, 'd10': 9, 'd12': 8, 'd20': 6, 'd100': 9 };
+    this.dice_mass = { 'd2': 5, 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
+    this.dice_inertia = { 'd2': 60, 'd4': 15, 'd6': 15, 'd8': 15, 'd10': 15, 'd12': 15, 'd20': 6, 'd100': 15 };
 
     this.scale = 50;
 
@@ -427,7 +427,7 @@
         this.world.addContactMaterial(new CANNON.ContactMaterial(
                     desk_body_material, this.dice_body_material, 0.01, 0.5));
         this.world.addContactMaterial(new CANNON.ContactMaterial(
-                    barrier_body_material, this.dice_body_material, 0, 1.0));
+                    barrier_body_material, this.dice_body_material, 0, 1.2));
         this.world.addContactMaterial(new CANNON.ContactMaterial(
                     this.dice_body_material, this.dice_body_material, 0, 0.5));
 
@@ -457,7 +457,7 @@
         this.running = false;
 
         this.renderer.render(this.scene, this.camera);
-    }
+    };
 
     this.dice_box.prototype.reinit = function(container, dimentions) {
 
@@ -588,7 +588,7 @@
     this.dice_box.prototype.check_if_throw_finished = function() {
         var res = true;
         var e = 6;
-        if (this.iteration < 10 / that.frame_rate) {
+        if (this.iteration < 200 / that.frame_rate) {
             for (var i = 0; i < this.dices.length; ++i) {
                 var dice = this.dices[i];
                 if (dice.dice_stopped === true) continue;

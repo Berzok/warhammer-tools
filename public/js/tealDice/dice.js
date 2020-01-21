@@ -212,9 +212,10 @@
     };
 
     this.create_d2_geometry = function(radius) {
-        var vertices = [[-1, 0, -1], [1, 0, -1], [1, 0, -1], [-1, 0, -1]];
-        var faces = [[0, 2, 3, 1], [0, 2, 1, 3, 2]];
-        return create_geom(vertices, faces, radius, 0, Math.PI / 2, 0.96);
+        var vertices = [[-1, -1, -0.04], [1, -1, -0.04], [1, 1, -0.04], [-1, 1, -0.04],
+            [-1, -1, 0.04], [1, -1, 0.04], [1, 1, 0.04], [-1, 1, 0.04]];
+        var faces = [[0, 3, 2, 1, 1], [6, 7, 4, 5, 2]];
+        return create_geom(vertices, faces, radius, 0.1, Math.PI / 4, 0.96);
     };
 
     this.create_d4_geometry = function(radius) {
@@ -521,7 +522,7 @@
         //         new THREE.MeshPhongMaterial({ color: that.desk_color }));
 
         const loader = new THREE.TextureLoader();
-        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1),
+        this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 0),
             new THREE.MeshPhongMaterial({ map: loader.load('/img/old_wood.jpg')}));
 
 

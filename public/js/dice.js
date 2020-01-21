@@ -1,13 +1,10 @@
-$('.diceIcon').each(function () {
-    $(this).attr('onclick', 'addDice(this.id)');
-});
 
 
 function addDice(id) {
-    let counter = $('#inventory'+id).val();
+    let counter = $('#inventory' + id).val();
     counter++;
-    $('#inventory'+id).val(counter);
-    $('#'+id).parent().siblings()[0].children[0].innerText = counter;
+    $('#inventory' + id).val(counter);
+    $('#' + id).parent().siblings()[0].children[0].innerText = counter;
     diceInBag[id] += 1;
     if (id == 'd100') {
         diceInBag['d10'] += 1;
@@ -21,21 +18,21 @@ function addDice(id) {
 }
 
 
-var diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};
+var diceInBag = {'d2': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};
 
 
 $('.row.align-items-center').each(function () {
     $(this).on('click', function () {
         addDice(this.children[1].children[0].id);
-    })
+    });
 });
 
 
 function clearInventory() {
-    $.each(diceInBag, function(k, v){
-        $('#inventory'+k).val(0);
-        $('#'+k).parent().siblings()[0].children[0].innerText = 0;
+    $.each(diceInBag, function (k, v) {
+        $('#inventory' + k).val(0);
+        $('#' + k).parent().siblings()[0].children[0].innerText = 0;
     });
     $('#set').val('');
-    diceInBag = {'d3': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};
+    diceInBag = {'d2': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};
 }

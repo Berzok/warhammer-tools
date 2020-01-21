@@ -54,9 +54,6 @@ function dice_initialize(container) {
     var box = new $t.dice.dice_box(canvas);
     box.animate_selector = false;
 
-    $t.bind(window, 'ready', function(){
-        box.reinit(canvas, { w: 830, h: 417 });
-    });
     $t.bind(window, 'resize', function() {
         //canvas.style.width = window.innerWidth - 1 + 'px';
         canvas.style.width = 500 + 'px';
@@ -136,4 +133,8 @@ function dice_initialize(container) {
     else {
         show_selector();
     }
+    setTimeout(function(){
+        console.dir('aaaaaaaaa');
+        box.reinit(canvas, { w: 830, h: 417 });
+    }, 680);
 }

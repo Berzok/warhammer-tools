@@ -133,8 +133,4 @@ function dice_initialize(container) {
     else {
         show_selector();
     }
-    setTimeout(function(){
-        console.dir('aaaaaaaaa');
-        box.reinit(canvas, { w: 830, h: 417 });
-    }, 680);
 }

@@ -36,3 +36,8 @@ function clearInventory() {
     $('#set').val('');
     diceInBag = {'d2': 0, 'd4': 0, 'd6': 0, 'd10': 0, 'd12': 0, 'd20': 0, 'd100': 0};
 }
+
+function initDices(){
+    $('#set').val('');
+    dice_initialize(document.body);
+}

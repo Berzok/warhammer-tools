@@ -294,12 +294,11 @@
     this.dice_face_range = { 'd2': [1,2], 'd4': [1, 4], 'd6': [1, 6], 'd8': [1, 8], 'd10': [0, 9],
         'd12': [1, 12], 'd20': [1, 20], 'd100': [0, 9] };
     this.dice_mass = { 'd2': 5, 'd4': 300, 'd6': 300, 'd8': 340, 'd10': 350, 'd12': 350, 'd20': 400, 'd100': 350 };
-    this.dice_inertia = { 'd2': 60, 'd4': 15, 'd6': 15, 'd8': 15, 'd10': 15, 'd12': 15, 'd20': 6, 'd100': 15 };
+    this.dice_inertia = { 'd2': 120, 'd4': 15, 'd6': 15, 'd8': 15, 'd10': 15, 'd12': 15, 'd20': 6, 'd100': 15 };
 
     this.scale = 50;
 
     this.create_d2 = function() {
-        console.dir('Construction d2');
         if (!this.d2_geometry) this.d2_geometry = this.create_d2_geometry(this.scale * 0.9);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
             this.create_dice_materials(this.standart_d20_dice_face_labels, this.scale / 2, 1.0));
@@ -467,10 +466,9 @@
 
         //this.cw = 400;
         //this.ch = container.clientHeight * 2;
-        console.log("Width of canvas = " + $('#canvas').width());
-        console.log("Height of canvas = " + $('#canvas').height());
         this.cw = $('#canvas').width();
         this.ch = $('#canvas').height();
+        this.h = $('#canvas').height();
 
 
         if (dimentions) {

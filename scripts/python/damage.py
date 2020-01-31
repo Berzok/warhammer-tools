@@ -12,7 +12,7 @@ total_damage = 0
 
 
 def ulric_fury(base_damage):
-  print "ULRIC'S FURY!"
+  print ("ULRIC'S FURY!")
   damage_dice = random.randint(1, 10)
   damage_dice2 = random.randint(1, 10)
   damage_dice = max(damage_dice, damage_dice2)
@@ -36,8 +36,8 @@ for i in range(A):
   else:
     attack_damage = 0
   total_damage += attack_damage
-  print '[#'+str(i)+' Attack]:'
-  print 'CC Score: ' + str(score)
-  print 'Total damage: ' + str(attack_damage) + '\n'
+  print ('[#'+str(i)+' Attack]:')
+  print ('CC Score: ' + str(score))
+  print ('Total damage: ' + str(attack_damage) + '\n')
 
-print '\n Total damage for the round: ' + str(total_damage)
+print ('\n Total damage for the round: ' + str(total_damage))
